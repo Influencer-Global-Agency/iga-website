@@ -1,0 +1,1001 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width,initial-scale=1.0"/>
+<title>IGA — Influencer Global Agency</title>
+<link rel="preconnect" href="https://fonts.googleapis.com"/>
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet"/>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/tabler-icons/2.44.0/iconfont/tabler-icons.min.css"/>
+<style>
+*{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth;-webkit-font-smoothing:antialiased}
+body{font-family:'Inter',sans-serif;background:#0a0a0f;color:#fff;overflow-x:hidden;cursor:none}
+::selection{background:rgba(232,67,122,.2)}
+::-webkit-scrollbar{width:4px}
+::-webkit-scrollbar-track{background:transparent}
+::-webkit-scrollbar-thumb{background:rgba(232,67,122,.45);border-radius:4px}
+:root{
+  --pink:#e8437a;--purple:#7c3aed;--orange:#f97316;
+  --cream:#faf7f2;--cream2:#f3ede3;--cream3:#e8dfd0;
+  --dark:#0a0a0f;--dark2:#111118;--text:#16161e;--muted:#5c5c78;
+  --grad:linear-gradient(135deg,#e8437a 0%,#7c3aed 55%,#f97316 100%);
+}
+
+/* Cursor */
+#cd{position:fixed;width:6px;height:6px;background:var(--pink);border-radius:50%;pointer-events:none;z-index:9999;top:-20px;left:-20px;transform:translate(-50%,-50%)}
+#cr{position:fixed;width:28px;height:28px;border:1px solid rgba(232,67,122,.35);border-radius:50%;pointer-events:none;z-index:9998;top:-20px;left:-20px;transform:translate(-50%,-50%);transition:top .09s ease,left .09s ease}
+
+/* Nav */
+#nav{position:fixed;top:0;left:0;right:0;z-index:500;transition:background .4s,border-color .4s}
+#nav.scrolled{background:rgba(10,10,15,.88);backdrop-filter:blur(24px);border-bottom:1px solid rgba(255,255,255,.05)}
+#nav.light.scrolled{background:rgba(250,247,242,.93);backdrop-filter:blur(20px);border-bottom:1px solid rgba(0,0,0,.07)}
+.ni{max-width:1160px;margin:0 auto;padding:0 48px;height:66px;display:flex;align-items:center;justify-content:space-between;gap:32px}
+.logo{font-size:19px;font-weight:900;letter-spacing:-.5px;background:var(--grad);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;cursor:pointer;border:none;background-color:transparent;font-family:'Inter',sans-serif}
+.nl{display:flex;align-items:center;gap:32px}
+.nl a{font-size:13px;font-weight:500;color:rgba(255,255,255,.52);cursor:pointer;text-decoration:none;transition:color .2s;background:none;border:none;font-family:'Inter',sans-serif}
+.nl a:hover,.nl a.on{color:#fff}
+#nav.light .nl a{color:rgba(22,22,30,.48)}
+#nav.light .nl a:hover,#nav.light .nl a.on{color:var(--text)}
+.nc{display:flex;align-items:center;gap:10px}
+#hbtn{display:none;background:none;border:none;cursor:pointer;color:#fff;padding:4px}
+#mob{display:none;background:rgba(10,10,15,.97);backdrop-filter:blur(24px);border-top:1px solid rgba(255,255,255,.05);padding:8px 48px 28px}
+#mob.open{display:block}
+.ml{display:block;width:100%;text-align:left;padding:13px 0;font-size:14px;font-weight:500;color:rgba(255,255,255,.6);background:none;border:none;cursor:pointer;font-family:'Inter',sans-serif;border-bottom:1px solid rgba(255,255,255,.04)}
+.ml:hover{color:#fff}
+
+/* Buttons */
+.btn{display:inline-flex;align-items:center;justify-content:center;gap:7px;border:none;border-radius:100px;font-family:'Inter',sans-serif;font-weight:600;cursor:pointer;transition:transform .18s,box-shadow .18s;white-space:nowrap;letter-spacing:-.01em;line-height:1}
+.btn:active{transform:scale(.96)!important}
+.bg{background:var(--grad);color:#fff;box-shadow:0 4px 20px rgba(232,67,122,.25)}
+.bg:hover{transform:translateY(-2px) scale(1.02);box-shadow:0 8px 32px rgba(232,67,122,.42)}
+.bgh{background:transparent;color:#fff;border:1.5px solid rgba(255,255,255,.2)}
+.bgh:hover{border-color:rgba(255,255,255,.55);transform:translateY(-1px)}
+.boc{background:transparent;color:var(--text);border:1.5px solid rgba(0,0,0,.14);border-radius:100px}
+.boc:hover{border-color:var(--pink);color:var(--pink);transform:translateY(-1px)}
+.sm{padding:9px 20px;font-size:12.5px}
+.md{padding:12px 26px;font-size:13.5px}
+.lg{padding:14px 36px;font-size:14.5px}
+
+/* Layout */
+.w{max-width:1160px;margin:0 auto;padding:0 48px}
+.wm{max-width:960px;margin:0 auto;padding:0 48px}
+.ws{max-width:720px;margin:0 auto;padding:0 48px}
+.sec{padding:120px 0}
+.secsm{padding:64px 0}
+
+/* Grids */
+.g2{display:grid;grid-template-columns:repeat(auto-fit,minmax(300px,1fr));gap:20px}
+.g3{display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:20px}
+.g4{display:grid;grid-template-columns:repeat(auto-fit,minmax(155px,1fr));gap:12px}
+
+/* Cards */
+.gl{background:rgba(255,255,255,.03);border:1px solid rgba(255,255,255,.07);border-radius:20px;transition:border-color .3s}
+.gl:hover{border-color:rgba(255,255,255,.12)}
+.cc{background:#fff;border:1px solid rgba(0,0,0,.05);border-radius:18px;box-shadow:0 2px 14px rgba(0,0,0,.05);transition:transform .28s,box-shadow .28s}
+.cc:hover{transform:translateY(-4px);box-shadow:0 16px 48px rgba(0,0,0,.1)}
+
+/* Typography helpers */
+.gt{background:var(--grad);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text}
+.ew{display:block;font-size:10.5px;font-weight:700;letter-spacing:2.5px;text-transform:uppercase;color:var(--pink);margin-bottom:18px}
+
+/* Orbs */
+.orb{position:absolute;border-radius:50%;filter:blur(100px);opacity:.12;pointer-events:none;animation:orbf 18s ease-in-out infinite}
+@keyframes orbf{0%,100%{transform:translateY(0) scale(1)}50%{transform:translateY(-48px) scale(1.05)}}
+
+/* Ticker */
+.tkw{overflow:hidden;white-space:nowrap;padding:17px 0;border-top:1px solid rgba(255,255,255,.045);border-bottom:1px solid rgba(255,255,255,.045)}
+.tkt{display:inline-flex;animation:tks 32s linear infinite}
+.tki{display:inline-flex;align-items:center;gap:10px;padding:0 48px;font-size:11.5px;font-weight:600;letter-spacing:.08em;text-transform:uppercase;color:rgba(255,255,255,.32)}
+@keyframes tks{0%{transform:translateX(0)}100%{transform:translateX(-50%)}}
+
+/* Hero */
+.hero{min-height:100vh;display:flex;align-items:center;justify-content:center;text-align:center;padding:144px 48px 96px;position:relative;overflow:hidden}
+.hero h1{font-size:clamp(46px,6.5vw,82px);font-weight:900;line-height:1.03;letter-spacing:-3px;color:#fff}
+.sub{font-size:clamp(15px,1.6vw,17.5px);color:rgba(255,255,255,.46);max-width:480px;margin:28px auto 0;line-height:1.82;letter-spacing:-.01em}
+
+/* Floating cards */
+.fc{position:absolute;border-radius:14px;padding:14px 18px;pointer-events:none;min-width:130px;border:1px solid rgba(255,255,255,.07);background:rgba(20,20,28,.7);backdrop-filter:blur(16px)}
+.fv{font-size:21px;font-weight:900;letter-spacing:-.5px;line-height:1.1}
+.fs{font-size:10px;color:rgba(255,255,255,.38);margin-top:5px;font-weight:600;letter-spacing:.08em;text-transform:uppercase}
+
+/* Stats */
+.stc{border-radius:16px;padding:22px 16px;text-align:center}
+.stv{font-size:clamp(24px,3.5vw,38px);font-weight:900;letter-spacing:-1px;line-height:1}
+.stl{font-size:10px;font-weight:600;letter-spacing:.8px;text-transform:uppercase;margin-top:8px}
+
+/* Pill */
+.pill{display:inline-flex;align-items:center;gap:8px;background:rgba(255,255,255,.055);border:1px solid rgba(255,255,255,.09);border-radius:100px;padding:7px 18px;font-size:11.5px;font-weight:600;color:rgba(255,255,255,.58);margin-bottom:36px}
+.pd{width:6px;height:6px;border-radius:50%;background:#4ade80;animation:pdp 2s ease-in-out infinite;flex-shrink:0}
+@keyframes pdp{0%,100%{opacity:1;transform:scale(1)}50%{opacity:.4;transform:scale(1.4)}}
+
+/* Logo card */
+.lc{border-radius:16px;padding:24px 16px;display:flex;flex-direction:column;align-items:center;gap:10px;transition:transform .25s}
+.lc:hover{transform:translateY(-4px) scale(1.025)}
+
+/* Review */
+.rc{border-radius:18px;padding:28px;transition:transform .28s,box-shadow .28s}
+.rc:hover{transform:translateY(-5px);box-shadow:0 20px 56px rgba(0,0,0,.2)}
+.stars{display:flex;gap:2px;margin-bottom:14px}
+
+/* CTA band */
+.ctab{border-radius:24px;padding:80px 64px;text-align:center;position:relative;overflow:hidden;background:linear-gradient(135deg,rgba(232,67,122,.09),rgba(124,58,237,.09),rgba(249,115,22,.06));border:1px solid rgba(232,67,122,.13)}
+
+/* Dividers */
+.hrd{height:1px;background:rgba(255,255,255,.05);border:none;margin:0}
+.hrl{height:1px;background:rgba(0,0,0,.07);border:none;margin:0}
+.stripe{height:4px;background:var(--grad)}
+
+/* Cream pages */
+.cream-page{background:var(--cream);color:var(--text)}
+.cphr{padding:144px 48px 88px;text-align:center}
+.cream-page h1{font-size:clamp(36px,5.5vw,66px);font-weight:900;letter-spacing:-2.5px;line-height:1.05;color:var(--text)}
+.cream-page h2{font-size:clamp(26px,3.8vw,46px);font-weight:800;letter-spacing:-1.5px;line-height:1.1;color:var(--text)}
+.cream-page h3{font-size:16.5px;font-weight:700;color:var(--text);margin-bottom:8px;letter-spacing:-.2px}
+.cream-page p{color:#4e4e62;line-height:1.8;font-size:14.5px}
+.cream-page .sec{padding:96px 0}
+
+/* Forms */
+.fw{background:rgba(255,255,255,.03);border:1px solid rgba(255,255,255,.075);border-radius:24px;padding:52px 48px}
+.fl{display:block;font-size:10px;font-weight:700;letter-spacing:1.8px;text-transform:uppercase;margin-bottom:8px;color:rgba(255,255,255,.38)}
+.fi{width:100%;background:rgba(255,255,255,.055);border:1px solid rgba(255,255,255,.09);border-radius:11px;padding:12px 15px;color:#fff;font-size:13.5px;outline:none;transition:border-color .2s,background .2s;font-family:'Inter',sans-serif}
+.fi:focus{border-color:rgba(232,67,122,.5);background:rgba(255,255,255,.08)}
+.fi::placeholder{color:rgba(255,255,255,.18)}
+.fse{width:100%;background:rgba(255,255,255,.055);border:1px solid rgba(255,255,255,.09);border-radius:11px;padding:12px 15px;color:#fff;font-size:13.5px;outline:none;cursor:pointer;font-family:'Inter',sans-serif;-webkit-appearance:none;appearance:none}
+.fse option{background:#18181f;color:#fff}
+.fgr{display:grid;grid-template-columns:repeat(auto-fit,minmax(210px,1fr));gap:18px}
+.ffld{display:flex;flex-direction:column;margin-bottom:18px}
+.fsh{font-size:9.5px;font-weight:700;letter-spacing:2px;text-transform:uppercase;color:rgba(255,255,255,.25);border-bottom:1px solid rgba(255,255,255,.06);padding-bottom:11px;margin:36px 0 20px}
+.chg{display:flex;flex-wrap:wrap;gap:7px;margin-top:6px}
+.ch{padding:7px 14px;border-radius:100px;font-size:11.5px;font-weight:600;cursor:pointer;border:1px solid rgba(255,255,255,.11);color:rgba(255,255,255,.46);background:transparent;font-family:'Inter',sans-serif;transition:all .18s}
+.ch:hover{border-color:rgba(255,255,255,.3);color:rgba(255,255,255,.8)}
+.ch.on{background:var(--grad);border-color:transparent;color:#fff}
+
+/* Toast */
+.tst{position:fixed;bottom:28px;right:28px;z-index:9000;background:#fff;color:var(--text);border-radius:14px;padding:14px 22px;box-shadow:0 16px 48px rgba(0,0,0,.18);display:flex;align-items:center;gap:12px;font-size:13.5px;font-weight:600;animation:tstin .35s ease;max-width:360px}
+@keyframes tstin{from{opacity:0;transform:translateY(12px)}to{opacity:1;transform:translateY(0)}}
+
+/* Footer */
+.ftr{background:var(--dark2);border-top:1px solid rgba(255,255,255,.05);padding:84px 0 40px}
+.ftrg{display:grid;grid-template-columns:2fr 1fr 1fr 1fr;gap:56px}
+.flink{display:block;background:none;border:none;cursor:pointer;font-size:13px;color:rgba(255,255,255,.33);padding:5px 0;font-family:'Inter',sans-serif;transition:color .2s;text-align:left}
+.flink:hover{color:rgba(255,255,255,.8)}
+.flbl{font-size:9.5px;font-weight:700;letter-spacing:2px;text-transform:uppercase;color:rgba(255,255,255,.2);margin-bottom:18px}
+.sb{width:34px;height:34px;background:rgba(255,255,255,.05);border:1px solid rgba(255,255,255,.08);border-radius:9px;display:flex;align-items:center;justify-content:center;cursor:pointer;transition:all .2s;color:rgba(255,255,255,.38)}
+.sb:hover{background:rgba(232,67,122,.12);border-color:rgba(232,67,122,.28);color:var(--pink)}
+
+/* Legal */
+.lc2 h2{font-size:19px;font-weight:700;margin:36px 0 10px;color:var(--text)}
+.lc2 h3{font-size:15px;font-weight:600;margin:20px 0 6px;color:var(--text)}
+.lc2 p{margin-bottom:14px;font-size:14.5px;line-height:1.82;color:#4e4e62}
+.lc2 ul{margin:10px 0 14px 22px;list-style:disc}
+.lc2 li{font-size:14.5px;line-height:1.8;color:#4e4e62;margin-bottom:5px}
+.lc2 a{color:var(--pink);text-decoration:none}
+.lc2 a:hover{text-decoration:underline}
+
+/* Thank you */
+.ty{min-height:100vh;display:flex;align-items:center;justify-content:center;padding:80px 24px;background:var(--dark)}
+
+/* Page anim */
+.pin{animation:pin .38s ease}
+@keyframes pin{from{opacity:0;transform:translateY(10px)}to{opacity:1;transform:translateY(0)}}
+
+/* Mobile */
+@media(max-width:860px){
+  .nl,.nc{display:none}
+  #hbtn{display:flex}
+  .hero{padding:108px 24px 80px}
+  .hero h1{letter-spacing:-2px}
+  .fc{display:none}
+  .w,.wm,.ws{padding:0 24px}
+  .sec{padding:80px 0}
+  .secsm{padding:48px 0}
+  .cphr{padding:120px 24px 72px}
+  .ftrg{grid-template-columns:1fr 1fr;gap:36px}
+  .fw{padding:32px 24px}
+  .g2,.g3,.g4{grid-template-columns:1fr}
+  .ctab{padding:48px 28px}
+  .ni{padding:0 24px}
+  #mob{padding:8px 24px 28px}
+}
+</style>
+</head>
+<body>
+
+<div id="cd"></div>
+<div id="cr"></div>
+
+<header id="nav">
+  <div class="ni">
+    <button class="logo" onclick="go('home')">IGA</button>
+    <nav class="nl">
+      <a data-p="home" onclick="go('home')">Home</a>
+      <a data-p="brands" onclick="go('brands')">Brands</a>
+      <a data-p="creators" onclick="go('creators')">Creators</a>
+      <a data-p="about" onclick="go('about')">About</a>
+      <a data-p="case-studies" onclick="go('case-studies')">Work</a>
+    </nav>
+    <div class="nc">
+      <button class="btn bgh sm" onclick="go('brand-form')">Book a Call</button>
+      <button class="btn bg sm" onclick="go('creator-form')">Apply as Creator</button>
+    </div>
+    <button id="hbtn" onclick="togMob()"><i class="ti ti-menu-2" style="font-size:20px"></i></button>
+  </div>
+  <div id="mob">
+    <button class="ml" onclick="go('home');cMob()">Home</button>
+    <button class="ml" onclick="go('brands');cMob()">Brands</button>
+    <button class="ml" onclick="go('creators');cMob()">Creators</button>
+    <button class="ml" onclick="go('about');cMob()">About</button>
+    <button class="ml" onclick="go('case-studies');cMob()">Work</button>
+    <div style="display:flex;flex-direction:column;gap:10px;margin-top:20px">
+      <button class="btn bg md" onclick="go('brand-form');cMob()">Book a Brand Call</button>
+      <button class="btn bgh md" onclick="go('creator-form');cMob()">Apply as Creator</button>
+    </div>
+  </div>
+</header>
+
+<main id="app"></main>
+
+<footer class="ftr" id="ftr">
+  <div class="w">
+    <div class="ftrg">
+      <div>
+        <div class="gt" style="font-size:22px;font-weight:900;margin-bottom:16px">IGA</div>
+        <p style="font-size:13px;color:rgba(255,255,255,.32);line-height:1.8;max-width:220px">Influencer Global Agency — where brands meet the creators who move culture.</p>
+        <div style="display:flex;gap:9px;margin-top:22px">
+          <div class="sb"><i class="ti ti-brand-instagram" style="font-size:14px"></i></div>
+          <div class="sb"><i class="ti ti-brand-tiktok" style="font-size:14px"></i></div>
+          <div class="sb"><i class="ti ti-brand-linkedin" style="font-size:14px"></i></div>
+        </div>
+      </div>
+      <div>
+        <div class="flbl">Company</div>
+        <button class="flink" onclick="go('home')">Home</button>
+        <button class="flink" onclick="go('about')">About</button>
+        <button class="flink" onclick="go('case-studies')">Our Work</button>
+        <button class="flink" onclick="go('brands')">Brands</button>
+        <button class="flink" onclick="go('creators')">Creators</button>
+      </div>
+      <div>
+        <div class="flbl">Work With Us</div>
+        <button class="flink" onclick="go('brand-form')">Book a Brand Call</button>
+        <button class="flink" onclick="go('creator-form')">Apply as Creator</button>
+        <button class="flink" onclick="go('case-studies')">Case Studies</button>
+      </div>
+      <div>
+        <div class="flbl">Legal</div>
+        <button class="flink" onclick="go('privacy')">Privacy Policy</button>
+        <button class="flink" onclick="go('terms')">Terms of Service</button>
+        <button class="flink" onclick="go('accessibility')">Accessibility</button>
+        <button class="flink" onclick="go('creator-agreement')">Creator Agreement</button>
+      </div>
+    </div>
+    <div style="margin-top:56px;padding-top:24px;border-top:1px solid rgba(255,255,255,.05);display:flex;justify-content:space-between;flex-wrap:wrap;gap:8px">
+      <p style="color:rgba(255,255,255,.16);font-size:12px">© 2025 Influencer Global Agency LLC. All rights reserved.</p>
+      <p style="color:rgba(255,255,255,.16);font-size:12px">hello@influencerglobalagency.com</p>
+    </div>
+  </div>
+</footer>
+
+<div id="tst" class="tst" style="display:none"></div>
+
+<script>
+const RESEND_KEY='re_e6WEjT8d_KF6dU9P2RRctbd8sf5n6Qny2';
+const TO=['carly@influencerglobalagency.com','hello@influencerglobalagency.com'];
+
+const BRANDS=[
+  {name:'Sol Brush',url:'solbrush.com',color:'#f97316',icon:'ti-brush'},
+  {name:'Rae Basics',url:'raebasics.com',color:'#7c3aed',icon:'ti-sparkles'},
+  {name:'Accident Avenue',url:'accidentavenue.com',color:'#e8437a',icon:'ti-road'},
+  {name:'Miss Debbie',url:'missdebbie.co',color:'#f59e0b',icon:'ti-heart'},
+];
+
+const REVIEWS=[
+  {brand:'Sol Brush',person:'Emma R.',role:'Founder & CEO',text:'IGA completely transformed our creator program. Within 90 days we had 40+ UGC creators producing weekly content and our TikTok revenue tripled.'},
+  {brand:'Rae Basics',person:'Jordan T.',role:'Head of Marketing',text:"We'd burned out our team trying to manage influencers in-house. IGA built an entire affiliate infrastructure from scratch. We now generate recurring commission revenue every single month."},
+  {brand:'Accident Avenue',person:'Marcus L.',role:'Co-Founder',text:'The ROI has been insane. We get authentic creator content that converts better than anything our paid agency produced. IGA finds creators who actually care about the product.'},
+  {brand:'Miss Debbie',person:'Deborah K.',role:'Owner',text:"I was skeptical about influencer marketing but IGA proved me wrong. They found perfect micro-creators for my audience and our first campaign drove more sales than our entire last quarter."},
+  {brand:'Sol Brush',person:'Tyler W.',role:'VP Growth',text:"What separates IGA is they're obsessed with revenue, not just engagement. Every creator they bring us is vetted against our actual customer profile. It shows in the numbers."},
+];
+
+// ─── Router ───────────────────────────────────────────────────
+const LIGHT=['brands','creators','about','case-studies','privacy','terms','accessibility','creator-agreement'];
+const NOFOOT=['brand-form','creator-form','brand-ty','creator-ty'];
+
+function go(p){
+  const app=document.getElementById('app');
+  app.innerHTML='';app.className='pin';
+  const nav=document.getElementById('nav');
+  nav.classList.toggle('light',LIGHT.includes(p));
+  document.querySelectorAll('.nl a').forEach(a=>a.classList.toggle('on',a.dataset.p===p));
+  document.getElementById('ftr').style.display=NOFOOT.includes(p)?'none':'';
+  app.appendChild((PG[p]||PG.home)());
+  window.scrollTo({top:0,behavior:'smooth'});
+  setTimeout(initCounters,80);
+}
+function togMob(){document.getElementById('mob').classList.toggle('open')}
+function cMob(){document.getElementById('mob').classList.remove('open')}
+window.addEventListener('scroll',()=>document.getElementById('nav').classList.toggle('scrolled',scrollY>20));
+
+// ─── Cursor ───────────────────────────────────────────────────
+(()=>{
+  const d=document.getElementById('cd'),r=document.getElementById('cr');
+  document.addEventListener('mousemove',e=>{
+    d.style.left=e.clientX+'px';d.style.top=e.clientY+'px';
+    setTimeout(()=>{r.style.left=e.clientX+'px';r.style.top=e.clientY+'px'},80);
+  });
+})();
+
+// ─── Toast ────────────────────────────────────────────────────
+let _tt;
+function showToast(msg,ok=false){
+  const t=document.getElementById('tst');
+  t.innerHTML=`<div style="width:28px;height:28px;background:${ok?'linear-gradient(135deg,#e8437a,#7c3aed)':'#ef4444'};border-radius:8px;display:flex;align-items:center;justify-content:center;flex-shrink:0"><i class="ti ti-${ok?'check':'alert-circle'}" style="font-size:14px;color:#fff"></i></div><span>${msg}</span>`;
+  t.style.display='flex';clearTimeout(_tt);_tt=setTimeout(()=>t.style.display='none',5000);
+}
+
+// ─── Counters ─────────────────────────────────────────────────
+function initCounters(){
+  const obs=new IntersectionObserver(entries=>{
+    entries.forEach(e=>{
+      if(!e.isIntersecting)return;
+      const el=e.target,tgt=+el.dataset.t,pre=el.dataset.pre||'',suf=el.dataset.suf||'';
+      let s=null;
+      (function step(ts){if(!s)s=ts;const p=Math.min((ts-s)/1500,1),ease=1-Math.pow(1-p,3),v=Math.round(ease*tgt);el.textContent=pre+(v>=1000?v.toLocaleString():v)+suf;if(p<1)requestAnimationFrame(step);})(performance.now());
+      obs.unobserve(el);
+    });
+  },{threshold:.3});
+  document.querySelectorAll('.cnt').forEach(el=>obs.observe(el));
+}
+
+// ─── 3D tilt ──────────────────────────────────────────────────
+function tilt(el,str=6){
+  el.addEventListener('mousemove',e=>{
+    const r=el.getBoundingClientRect(),dx=(e.clientX-r.left-r.width/2)/r.width,dy=(e.clientY-r.top-r.height/2)/r.height;
+    el.style.transform=`perspective(700px) rotateY(${dx*str}deg) rotateX(${-dy*str}deg) translateZ(5px)`;
+    el.style.transition='transform .07s ease';
+  });
+  el.addEventListener('mouseleave',()=>{el.style.transform='';el.style.transition='transform .5s ease';});
+}
+
+// ─── Email via Resend ─────────────────────────────────────────
+async function sendEmail(data,isBrand){
+  const rows=Object.entries(data).filter(([k])=>k!=='consent').map(([k,v])=>{
+    const lbl=k.replace(/([A-Z])/g,' $1').replace(/^./,s=>s.toUpperCase());
+    const val=Array.isArray(v)?(v.length?v.join(', '):'—'):(v||'—');
+    return `<tr><td style="padding:8px 12px;font-weight:600;color:#555;white-space:nowrap;vertical-align:top;border-bottom:1px solid #f0f0f0;width:180px">${lbl}</td><td style="padding:8px 12px;color:#222;border-bottom:1px solid #f0f0f0">${val}</td></tr>`;
+  }).join('');
+  const subject=isBrand?`New Brand Application — ${data.brandName||'Unknown'}`:`New Creator Application — ${data.fullName||'Unknown'}`;
+  const html=`<div style="font-family:Inter,sans-serif;max-width:660px;margin:0 auto;background:#fff;border-radius:12px;overflow:hidden;border:1px solid #e8e8e8"><div style="background:linear-gradient(135deg,#e8437a,#7c3aed,#f97316);padding:28px 36px"><div style="font-size:20px;font-weight:900;color:#fff">IGA</div><div style="font-size:17px;font-weight:700;color:rgba(255,255,255,.9);margin-top:6px">${isBrand?'New Brand Application':'New Creator Application'}</div></div><div style="padding:28px 36px"><p style="font-size:14px;color:#444;margin:0 0 20px">A new ${isBrand?'brand strategy call request':'creator application'} was submitted via the IGA website.</p><table style="width:100%;border-collapse:collapse;font-size:13.5px;background:#fafafa;border-radius:8px;overflow:hidden">${rows}</table><div style="margin-top:24px;padding:14px 18px;background:#fdf4f7;border-left:4px solid #e8437a;border-radius:4px"><p style="font-size:12px;color:#999;margin:0">Submitted via influencerglobalagency.com · ${new Date().toLocaleString('en-US',{dateStyle:'full',timeStyle:'short'})}</p></div></div></div>`;
+  const res=await fetch('https://api.resend.com/emails',{method:'POST',headers:{'Content-Type':'application/json','Authorization':`Bearer ${RESEND_KEY}`},body:JSON.stringify({from:'IGA Website <onboarding@resend.dev>',to:TO,subject,html})});
+  if(!res.ok){const err=await res.json();console.error('Resend error:',err);throw new Error('Email failed');}
+}
+
+// ─── Form submit ──────────────────────────────────────────────
+async function submitForm(data,btn,dest,isBrand){
+  btn.disabled=true;btn.textContent='Submitting…';
+  try{
+    await sendEmail(data,isBrand);
+    go(dest);
+  }catch{
+    showToast('Something went wrong. Please try again.');
+    btn.disabled=false;btn.textContent='Submit →';
+  }
+}
+
+// ─── DOM helpers ──────────────────────────────────────────────
+function mk(tag,opts={},...kids){
+  const e=document.createElement(tag);
+  for(const[k,v]of Object.entries(opts)){
+    if(k==='style'&&typeof v==='object')Object.assign(e.style,v);
+    else if(k==='class')e.className=v;
+    else if(k==='html')e.innerHTML=v;
+    else if(k.startsWith('on'))e.addEventListener(k.slice(2).toLowerCase(),v);
+    else e.setAttribute(k,v);
+  }
+  kids.flat().forEach(c=>{if(c==null)return;e.appendChild(typeof c==='string'?document.createTextNode(c):c);});
+  return e;
+}
+const d=(c,s,...k)=>mk('div',{class:c||'',style:s||{}},...k);
+const p=(t,s)=>mk('p',{style:s||{}},t);
+
+function ew(text){return mk('span',{class:'ew'},text)}
+function btn(t,c,fn,s={}){return mk('button',{class:'btn '+c,onclick:fn,style:s},t)}
+
+function stCard(disp,tgt,pre,suf,label,dark=true){
+  const bg=dark?{background:'rgba(255,255,255,.04)',border:'1px solid rgba(255,255,255,.07)',borderRadius:'16px',padding:'22px 16px',textAlign:'center'}:{background:'#fff',border:'1px solid rgba(0,0,0,.06)',borderRadius:'16px',padding:'22px 16px',textAlign:'center',boxShadow:'0 2px 12px rgba(0,0,0,.05)'};
+  const v=mk('div',{class:'stv gt'});
+  if(disp){v.textContent=disp;}else{v.innerHTML=`<span class="cnt" data-t="${tgt}" data-pre="${pre||''}" data-suf="${suf||''}">${pre||''}0${suf||''}</span>`;}
+  return mk('div',{style:bg},v,mk('div',{class:'stl',style:{color:dark?'rgba(255,255,255,.38)':'#9a9ab0'}},label));
+}
+
+function starEls(){
+  const s=mk('div',{class:'stars'});
+  for(let i=0;i<5;i++)s.appendChild(mk('i',{class:'ti ti-star-filled',style:{fontSize:'12px',color:'var(--orange)'}}));
+  return s;
+}
+
+function revCard(r,dark=true){
+  const card=mk('div',dark?{class:'gl rc',style:{padding:'28px'}}:{class:'rc',style:{padding:'28px',background:'#fff',border:'1px solid rgba(0,0,0,.05)'}});
+  card.appendChild(starEls());
+  card.appendChild(p(`"${r.text}"`,{fontSize:'13.5px',lineHeight:'1.78',color:dark?'rgba(255,255,255,.62)':'#4e4e62',marginBottom:'20px',marginTop:'2px'}));
+  const meta=d('',{display:'flex',alignItems:'center',gap:'11px'});
+  const av=mk('div',{style:{width:'34px',height:'34px',borderRadius:'50%',background:'linear-gradient(135deg,#e8437a,#7c3aed)',display:'flex',alignItems:'center',justifyContent:'center',fontSize:'13px',fontWeight:'700',color:'#fff',flexShrink:'0'}},r.person[0]);
+  const mt=d('',{});
+  mt.appendChild(mk('div',{style:{fontWeight:'700',fontSize:'13px',color:dark?'#fff':'var(--text)'}},r.person));
+  mt.appendChild(mk('div',{style:{fontSize:'11px',color:dark?'rgba(255,255,255,.33)':'#9a9ab0',marginTop:'2px'}},`${r.role} · ${r.brand}`));
+  meta.appendChild(av);meta.appendChild(mt);card.appendChild(meta);
+  return card;
+}
+
+function logoGrid(dark=true){
+  const g=mk('div',{style:{display:'grid',gridTemplateColumns:'repeat(auto-fit,minmax(148px,1fr))',gap:'14px'}});
+  BRANDS.forEach(b=>{
+    const card=mk('div',{class:'lc',style:{background:dark?'rgba(255,255,255,.03)':'#fff',border:`1px solid ${b.color}1e`,borderRadius:'16px',boxShadow:dark?'none':'0 2px 14px rgba(0,0,0,.05)'}},
+      mk('div',{style:{width:'42px',height:'42px',borderRadius:'13px',background:`${b.color}18`,display:'flex',alignItems:'center',justifyContent:'center',color:b.color}},mk('i',{class:`ti ${b.icon}`,style:{fontSize:'20px'}})),
+      mk('div',{style:{fontWeight:'700',fontSize:'13px',color:dark?'#fff':'var(--text)',marginTop:'2px'}},b.name),
+      mk('div',{style:{fontSize:'11px',color:dark?'rgba(255,255,255,.3)':'#9a9ab0'}},b.url)
+    );
+    tilt(card,4);g.appendChild(card);
+  });
+  return g;
+}
+
+function ctaBand(){
+  const sec=mk('section',{class:'sec'});
+  const ww=mk('div',{class:'wm'});
+  const band=mk('div',{class:'ctab'});
+  band.appendChild(ew('Ready to grow?'));
+  const h2=mk('h2',{style:{fontSize:'clamp(26px,4vw,46px)',fontWeight:'900',color:'#fff',letterSpacing:'-1.5px',lineHeight:'1.1',margin:'10px 0 18px'}});
+  h2.innerHTML='For brands ready to scale.<br><span class="gt">For creators ready to get paid.</span>';
+  band.appendChild(h2);
+  band.appendChild(p('Join the creator economy\'s most performance-focused agency.',{fontSize:'16px',color:'rgba(255,255,255,.44)',marginBottom:'36px',lineHeight:'1.75',maxWidth:'400px',margin:'0 auto 36px'}));
+  const bs=d('',{display:'flex',gap:'12px',justifyContent:'center',flexWrap:'wrap'});
+  bs.appendChild(btn('Book a Brand Strategy Call','bg lg',()=>go('brand-form')));
+  bs.appendChild(btn('Apply as a Creator','bgh md',()=>go('creator-form')));
+  band.appendChild(bs);ww.appendChild(band);sec.appendChild(ww);return sec;
+}
+
+function darkCTA(hl,sub,btnTxt,btnPg){
+  const sec=mk('section',{class:'sec',style:{background:'var(--dark)'}});
+  const ww=mk('div',{class:'ws',style:{textAlign:'center'}});
+  const h2=mk('h2',{style:{fontSize:'clamp(24px,3.5vw,42px)',fontWeight:'900',color:'#fff',letterSpacing:'-1.5px',lineHeight:'1.12',marginBottom:'18px'}});
+  h2.innerHTML=hl;
+  ww.appendChild(h2);
+  ww.appendChild(p(sub,{color:'rgba(255,255,255,.42)',fontSize:'15px',lineHeight:'1.75',marginBottom:'36px'}));
+  ww.appendChild(btn(btnTxt,'bg lg',()=>go(btnPg)));
+  sec.appendChild(ww);return sec;
+}
+
+// ─── Form builders ────────────────────────────────────────────
+function buildFormPage(config){
+  const root=mk('div',{style:{minHeight:'100vh',padding:'100px 20px 80px',background:'var(--dark)',position:'relative'}});
+  root.appendChild(mk('div',{class:'orb',style:{width:'440px',height:'440px',background:`radial-gradient(${config.orbColor},transparent)`,top:'-80px',[config.orbSide]:'-80px',position:'absolute',pointerEvents:'none'}}));
+  const cont=mk('div',{style:{maxWidth:'680px',margin:'0 auto',position:'relative',zIndex:'1'}});
+  const hd=d('',{textAlign:'center',marginBottom:'52px'});
+  hd.appendChild(mk('span',{class:'ew'},config.eyebrow));
+  hd.appendChild(mk('h1',{style:{fontSize:'clamp(28px,4vw,44px)',fontWeight:'900',color:'#fff',letterSpacing:'-1.5px',lineHeight:'1.08',marginBottom:'12px'}},config.title));
+  hd.appendChild(p(config.subtitle,{color:'rgba(255,255,255,.42)',fontSize:'15px',lineHeight:'1.75'}));
+  cont.appendChild(hd);
+  const fw=mk('div',{class:'fw'});
+  const D={};const CS={};
+  function sh(t){fw.appendChild(mk('div',{class:'fsh'},t));}
+  function fi(label,key,type='text',ph=''){
+    D[key]='';
+    const w=mk('div',{class:'ffld'});
+    w.appendChild(mk('label',{class:'fl'},label));
+    const i=mk(type==='textarea'?'textarea':'input',{class:'fi',placeholder:ph});
+    if(type!=='textarea')i.type=type;else{i.rows=3;i.style.resize='vertical';}
+    i.addEventListener('input',()=>{D[key]=i.value;});
+    w.appendChild(i);return w;
+  }
+  function fsel(label,key,opts){
+    D[key]='';
+    const w=mk('div',{class:'ffld'});
+    w.appendChild(mk('label',{class:'fl'},label));
+    const s=mk('select',{class:'fse'});
+    s.appendChild(mk('option',{value:''},'Select…'));
+    opts.forEach(o=>s.appendChild(mk('option',{value:o},o)));
+    s.addEventListener('change',()=>{D[key]=s.value;});
+    w.appendChild(s);return w;
+  }
+  function fchips(label,key,opts){
+    CS[key]=[];D[key]=[];
+    const w=mk('div',{style:{marginBottom:'22px'}});
+    w.appendChild(mk('label',{class:'fl'},label));
+    const g=mk('div',{class:'chg'});
+    opts.forEach(o=>{
+      const c=mk('button',{class:'ch',type:'button'},o);
+      c.addEventListener('click',()=>{const on=CS[key].includes(o);if(on){CS[key]=CS[key].filter(v=>v!==o);c.classList.remove('on');}else{CS[key].push(o);c.classList.add('on');}D[key]=[...CS[key]];});
+      g.appendChild(c);
+    });
+    w.appendChild(g);fw.appendChild(w);
+  }
+  function grid(...fields){const g=mk('div',{class:'fgr'});fields.forEach(f=>{if(f)g.appendChild(f);});fw.appendChild(g);}
+  function block(f){fw.appendChild(f);}
+  config.build(sh,fi,fsel,fchips,grid,block,D);
+  const sbtn=mk('button',{class:'btn bg lg',style:{width:'100%',borderRadius:'14px',marginTop:'28px',justifyContent:'center',background:config.btnGrad||undefined}},config.submitLabel);
+  sbtn.addEventListener('click',async()=>{
+    if(!config.validate(D)){return;}
+    await submitForm(D,sbtn,config.dest,config.isBrand);
+  });
+  fw.appendChild(sbtn);
+  const ln=mk('p',{style:{textAlign:'center',color:'rgba(255,255,255,.2)',fontSize:'11.5px',marginTop:'12px'}});
+  ln.innerHTML='<i class="ti ti-lock" style="font-size:10px;margin-right:4px"></i>Your information is secure and will never be shared.';
+  fw.appendChild(ln);
+  cont.appendChild(fw);root.appendChild(cont);return root;
+}
+
+// ══════════════════════════════════════════════════════════════
+// PAGES
+// ══════════════════════════════════════════════════════════════
+const PG={};
+
+// HOME
+PG.home=function(){
+  const root=mk('div',{});
+  const hero=mk('section',{class:'hero'});
+  [{c:'#e8437a',w:'700px',t:'-300px',l:'-240px',dl:'0s'},{c:'#7c3aed',w:'520px',t:'15%',r:'-160px',dl:'-6s'},{c:'#f97316',w:'420px',b:'-80px',l:'33%',dl:'-12s'}].forEach(o=>{
+    hero.appendChild(mk('div',{class:'orb',style:{width:o.w,height:o.w,background:`radial-gradient(${o.c},transparent)`,top:o.t||'auto',bottom:o.b||'auto',left:o.l||'auto',right:o.r||'auto',animationDelay:o.dl}}));
+  });
+  [{x:'5%',y:'22%',val:'$2.4M',sub:'Revenue this quarter',col:'#e8437a',rot:-7,dur:'6.4s',dl:'0s'},{x:'78%',y:'10%',val:'847',sub:'Active creators',col:'#7c3aed',rot:6,dur:'7.1s',dl:'-1.8s'},{x:'83%',y:'56%',val:'4.9 ★',sub:'Avg brand rating',col:'#f97316',rot:-5,dur:'6.7s',dl:'-3.2s'},{x:'3%',y:'65%',val:'+340%',sub:'Avg revenue lift',col:'#7c3aed',rot:7,dur:'7.5s',dl:'-2s'}].forEach((fc,i)=>{
+    document.head.appendChild(mk('style',{html:`@keyframes fl${i}{0%,100%{transform:translateY(0) rotate(${fc.rot}deg)}50%{transform:translateY(-16px) rotate(${fc.rot*.55}deg)}}`}));
+    const card=mk('div',{class:'fc',style:{left:fc.x,top:fc.y,animation:`fl${i} ${fc.dur} ease-in-out infinite`,animationDelay:fc.dl}});
+    const vEl=mk('div',{class:'fv',style:{background:`linear-gradient(135deg,${fc.col},${fc.col}aa)`,WebkitBackgroundClip:'text',WebkitTextFillColor:'transparent'}},fc.val);
+    card.appendChild(vEl);card.appendChild(mk('div',{class:'fs'},fc.sub));hero.appendChild(card);
+  });
+  const hc=mk('div',{style:{maxWidth:'800px',position:'relative',zIndex:'2'}});
+  const pill=mk('div',{class:'pill'});pill.innerHTML='<span class="pd"></span>Actively placing creators &nbsp;·&nbsp; Now accepting brands';hc.appendChild(pill);
+  const h1=mk('h1',{});h1.innerHTML='Where brands meet<br><span class="gt">the creators who</span><br>move culture.';hc.appendChild(h1);
+  hc.appendChild(p('IGA is a performance-focused creator marketing agency connecting DTC brands with influencers, affiliates, and UGC partners engineered to drive real revenue.',{class:'sub'}));
+  const hbs=d('',{display:'flex',gap:'12px',justifyContent:'center',flexWrap:'wrap',marginTop:'44px',marginBottom:'80px'});
+  hbs.appendChild(btn('Book a Brand Strategy Call','bg lg',()=>go('brand-form')));
+  hbs.appendChild(btn('Apply as a Creator','bgh md',()=>go('creator-form')));
+  hc.appendChild(hbs);
+  const sg=mk('div',{class:'g4',style:{gap:'12px'}});
+  [{disp:'8-Figure',lbl:'Revenue Driven'},{t:1000000,pre:'$',suf:'+',lbl:'Paid to Creators'},{t:500,pre:'',suf:'+',lbl:'Creators Worked With'},{t:4,pre:'',suf:'',lbl:'Active Brand Partners'}].forEach(s=>sg.appendChild(stCard(s.disp,s.t,s.pre,s.suf,s.lbl,true)));
+  hc.appendChild(sg);hero.appendChild(hc);root.appendChild(hero);
+
+  // Ticker
+  const tw=mk('div',{class:'tkw'});const tt=mk('div',{class:'tkt'});
+  const tItems=['8-Figure Revenue Driven','$1M+ Paid to Creators','500+ Creator Partnerships','4 Active Brand Partners','TikTok Shop Campaigns','UGC Content Programs','Affiliate Management','Ambassador Recruiting','Performance Tracking'];
+  [...tItems,...tItems].forEach(t=>{const i=mk('span',{class:'tki'});i.innerHTML=`<i class="ti ti-diamond" style="font-size:9px;color:var(--pink)"></i>${t}`;tt.appendChild(i);});
+  tw.appendChild(tt);root.appendChild(tw);
+
+  // Brand logos
+  const ls=mk('section',{class:'secsm'});const lc=mk('div',{class:'wm'});
+  lc.appendChild(mk('p',{style:{textAlign:'center',fontSize:'10px',fontWeight:'700',letterSpacing:'2.5px',textTransform:'uppercase',color:'rgba(255,255,255,.22)',marginBottom:'32px'}},'Current Brand Partners'));
+  lc.appendChild(logoGrid(true));ls.appendChild(lc);root.appendChild(ls);
+  root.appendChild(mk('hr',{class:'hrd'}));
+
+  // Services
+  const wds=mk('section',{class:'sec'});const wdc=mk('div',{class:'w'});
+  const wdh=d('',{textAlign:'center',marginBottom:'72px'});
+  wdh.appendChild(ew('What We Do'));
+  const wdh2=mk('h2',{style:{fontSize:'clamp(26px,4vw,50px)',fontWeight:'900',color:'#fff',letterSpacing:'-2px',lineHeight:'1.08',marginBottom:'18px'}});
+  wdh2.innerHTML='Creator campaigns built for<br>revenue, not vanity metrics.';
+  wdh.appendChild(wdh2);
+  wdh.appendChild(p("We handle the full creator marketing stack so your team doesn't have to.",{color:'rgba(255,255,255,.42)',fontSize:'16px',lineHeight:'1.75',maxWidth:'440px',margin:'0 auto'}));
+  wdc.appendChild(wdh);
+  const sg2=mk('div',{class:'g3'});
+  [{ic:'ti-target',t:'Performance Campaigns',d:'Every campaign tied to revenue KPIs — not impressions. We track what actually moves the needle.'},{ic:'ti-users-group',t:'Creator Pipeline Management',d:'End-to-end: sourcing, vetting, outreach, contracting, activation, and ongoing relationship management.'},{ic:'ti-trending-up',t:'Affiliate & Commission Programs',d:'Build compounding revenue streams with scalable affiliate structures and creator-driven commission campaigns.'},{ic:'ti-video',t:'UGC Content Production',d:'High-converting UGC for paid ads, product pages, and organic social — from creators who know how to perform.'},{ic:'ti-shopping-bag',t:'TikTok Shop Campaigns',d:'Full TikTok Shop setup, creator recruitment, and campaign management for brands ready to own the platform.'},{ic:'ti-crown',t:'Ambassador Programs',d:'Long-term brand ambassador relationships that build community, trust, and consistent content volume at scale.'}].forEach(s=>{
+    const card=mk('div',{class:'gl',style:{borderRadius:'20px',padding:'32px 28px'}});
+    const ib=mk('div',{style:{width:'44px',height:'44px',borderRadius:'14px',background:'linear-gradient(135deg,rgba(232,67,122,.18),rgba(124,58,237,.12))',display:'flex',alignItems:'center',justifyContent:'center',marginBottom:'20px',color:'var(--pink)'}});
+    ib.appendChild(mk('i',{class:`ti ${s.ic}`,style:{fontSize:'20px'}}));card.appendChild(ib);
+    card.appendChild(mk('h3',{style:{color:'#fff',fontWeight:'700',fontSize:'15.5px',marginBottom:'10px',letterSpacing:'-.2px'}},s.t));
+    card.appendChild(p(s.d,{color:'rgba(255,255,255,.42)',fontSize:'13.5px',lineHeight:'1.75'}));
+    tilt(card);sg2.appendChild(card);
+  });
+  wdc.appendChild(sg2);wds.appendChild(wdc);root.appendChild(wds);
+  root.appendChild(mk('hr',{class:'hrd'}));
+
+  // Two tracks
+  const trs=mk('section',{class:'sec'});const trc=mk('div',{class:'w'});
+  const trh=d('',{textAlign:'center',marginBottom:'60px'});
+  trh.appendChild(ew('Two Tracks. One Agency.'));
+  trh.appendChild(mk('h2',{style:{fontSize:'clamp(26px,4vw,48px)',fontWeight:'900',color:'#fff',letterSpacing:'-2px',lineHeight:'1.08'}},'Built for brands. Built for creators.'));
+  trc.appendChild(trh);
+  const trg=mk('div',{class:'g2',style:{gap:'22px'}});
+  [{side:'Brands',col:'#e8437a',ic:'ti-building-store',cta:'Explore Brand Services',tgt:'brands',desc:'We build and manage your entire creator marketing program — from strategy through activation and reporting.',items:['Influencer campaign strategy & management','Creator sourcing, vetting & outreach','UGC content pipelines','Affiliate program setup & management','TikTok Shop campaigns','Monthly revenue reporting']},{side:'Creators',col:'#7c3aed',ic:'ti-device-camera-video',cta:'Apply to the Network',tgt:'creator-form',desc:'Get connected to brand deals, UGC opportunities, affiliate campaigns, and long-term management.',items:['UGC & paid ad content creation','Affiliate & commission deals','Flat-rate brand partnerships','TikTok Shop collaborations','Ambassador programs','Creator management & representation']}].forEach(t=>{
+    const card=mk('div',{class:'gl',style:{borderRadius:'24px',padding:'40px 36px',border:`1px solid ${t.col}1a`,position:'relative',overflow:'hidden'}});
+    card.appendChild(mk('div',{style:{position:'absolute',top:'-50px',right:'-50px',width:'180px',height:'180px',background:`radial-gradient(${t.col}14,transparent)`,borderRadius:'50%',pointerEvents:'none'}}));
+    const hrow=d('',{display:'flex',alignItems:'center',gap:'14px',marginBottom:'20px'});
+    hrow.appendChild(mk('div',{style:{width:'50px',height:'50px',borderRadius:'16px',background:`${t.col}22`,display:'flex',alignItems:'center',justifyContent:'center',color:t.col}},mk('i',{class:`ti ${t.ic}`,style:{fontSize:'23px'}})));
+    const ht=d('',{});
+    ht.appendChild(mk('div',{style:{fontSize:'9.5px',fontWeight:'700',letterSpacing:'2px',color:t.col,textTransform:'uppercase',marginBottom:'3px'}},'For'));
+    ht.appendChild(mk('h3',{style:{color:'#fff',fontWeight:'900',fontSize:'22px',letterSpacing:'-.5px',margin:'0'}},t.side));
+    hrow.appendChild(ht);card.appendChild(hrow);
+    card.appendChild(p(t.desc,{color:'rgba(255,255,255,.48)',fontSize:'14px',lineHeight:'1.8',marginBottom:'24px'}));
+    const ul=mk('ul',{style:{listStyle:'none',marginBottom:'32px'}});
+    t.items.forEach(item=>{const li=mk('li',{style:{display:'flex',alignItems:'center',gap:'10px',padding:'9px 0',borderBottom:'1px solid rgba(255,255,255,.05)',fontSize:'13.5px',color:'rgba(255,255,255,.68)'}});li.innerHTML=`<i class="ti ti-check" style="font-size:12px;color:${t.col};flex-shrink:0"></i>${item}`;ul.appendChild(li);});
+    card.appendChild(ul);
+    card.appendChild(mk('button',{class:'btn bg md',onclick:()=>go(t.tgt),style:{background:`linear-gradient(135deg,${t.col},${t.side==='Brands'?'#7c3aed':'#f97316'})`}},t.cta));
+    tilt(card);trg.appendChild(card);
+  });
+  trc.appendChild(trg);trs.appendChild(trc);root.appendChild(trs);
+  root.appendChild(mk('hr',{class:'hrd'}));
+
+  // Reviews
+  const rvs=mk('section',{class:'sec'});const rvc=mk('div',{class:'w'});
+  const rvh=d('',{textAlign:'center',marginBottom:'56px'});
+  rvh.appendChild(ew('Social Proof'));
+  rvh.appendChild(mk('h2',{style:{fontSize:'clamp(24px,4vw,46px)',fontWeight:'900',color:'#fff',letterSpacing:'-1.5px',marginBottom:'10px'}},'Real results. Real brands.'));
+  rvh.appendChild(p("Don't take our word for it.",{color:'rgba(255,255,255,.36)',fontSize:'14px'}));
+  rvc.appendChild(rvh);
+  const rvg=mk('div',{class:'g3'});
+  REVIEWS.slice(0,3).forEach(r=>rvg.appendChild(revCard(r,true)));
+  rvc.appendChild(rvg);rvs.appendChild(rvc);root.appendChild(rvs);
+  root.appendChild(ctaBand());
+  return root;
+};
+
+// BRANDS
+PG.brands=function(){
+  const root=mk('div',{class:'cream-page'});
+  root.appendChild(mk('div',{class:'stripe'}));
+  const hero=mk('div',{class:'cphr'});
+  const hc=mk('div',{class:'ws',style:{textAlign:'center'}});
+  hc.appendChild(ew('For Brands'));
+  const h1=mk('h1',{style:{marginBottom:'22px'}});h1.innerHTML='We connect you to creators<br><span class="gt">who drive real revenue.</span>';hc.appendChild(h1);
+  hc.appendChild(p('IGA builds and manages your full creator marketing program — influencer campaigns, UGC pipelines, affiliate programs, and ambassador systems.',{fontSize:'17px',color:'#606070',maxWidth:'500px',margin:'0 auto 40px',lineHeight:'1.82'}));
+  const hbs=d('',{display:'flex',gap:'12px',justifyContent:'center',flexWrap:'wrap'});
+  hbs.appendChild(btn('Book a Strategy Call','bg lg',()=>go('brand-form')));
+  hbs.appendChild(btn('See Our Work','boc md',()=>go('case-studies')));
+  hc.appendChild(hbs);
+  const sg=mk('div',{class:'g4',style:{gap:'12px',marginTop:'56px'}});
+  [{disp:'8-Figure',lbl:'Revenue Driven'},{t:1000000,pre:'$',suf:'+',lbl:'Paid to Creators'},{t:500,pre:'',suf:'+',lbl:'Creators in Network'},{t:4,pre:'',suf:'',lbl:'Active Partners'}].forEach(s=>sg.appendChild(stCard(s.disp,s.t,s.pre,s.suf,s.lbl,false)));
+  hc.appendChild(sg);hero.appendChild(hc);root.appendChild(hero);
+  root.appendChild(mk('hr',{class:'hrl'}));
+
+  // Pain
+  const ps=mk('section',{class:'sec'});const pc=mk('div',{class:'wm'});
+  const ph=d('',{textAlign:'center',marginBottom:'56px'});
+  ph.appendChild(ew('Sound Familiar?'));ph.appendChild(mk('h2',{style:{fontSize:'clamp(24px,3.8vw,44px)',fontWeight:'800',letterSpacing:'-1.5px',lineHeight:'1.1',color:'var(--text)'}},'The problems we were built to solve.'));
+  pc.appendChild(ph);const pg=mk('div',{class:'g2'});
+  [{ic:'ti-flame',t:'Paid ads are plateauing',d:'CPMs rising, ROAS falling. Brands relying solely on Meta and Google are hitting a ceiling.'},{ic:'ti-puzzle-off',t:'No creator program',d:'No system for sourcing, vetting, contracting, or activating creators at any kind of scale.'},{ic:'ti-chart-line-down',t:"Influencers who don't convert",d:"Big follower counts, no actual revenue. You've been burned by vanity metrics before."},{ic:'ti-clock-off',t:'No bandwidth internally',d:"Your team is stretched. Managing creators is a full-time job you can't afford to add."}].forEach(item=>{
+    const card=mk('div',{class:'cc',style:{padding:'32px 28px'}});
+    const ib=mk('div',{style:{width:'44px',height:'44px',borderRadius:'13px',background:'rgba(232,67,122,.08)',display:'flex',alignItems:'center',justifyContent:'center',marginBottom:'18px',color:'var(--pink)'}});
+    ib.appendChild(mk('i',{class:`ti ${item.ic}`,style:{fontSize:'20px'}}));card.appendChild(ib);
+    card.appendChild(mk('h3',{style:{fontSize:'16.5px',fontWeight:'700',color:'var(--text)',marginBottom:'8px'}},item.t));
+    card.appendChild(p(item.d,{fontSize:'14px'}));pg.appendChild(card);
+  });
+  pc.appendChild(pg);ps.appendChild(pc);root.appendChild(ps);
+  root.appendChild(mk('hr',{class:'hrl'}));
+
+  // Pricing — custom quoted
+  const prs=mk('section',{class:'sec',style:{background:'var(--cream2)'}});
+  const prc=mk('div',{class:'ws'});
+  const prh=d('',{textAlign:'center',marginBottom:'52px'});
+  prh.appendChild(ew('Investment'));
+  prh.appendChild(mk('h2',{style:{fontSize:'clamp(24px,3.8vw,44px)',fontWeight:'800',letterSpacing:'-1.5px',color:'var(--text)'}},'Custom-quoted for every brand.'));
+  prh.appendChild(p('Every brand we work with is different. Pricing is built around your goals, your stage, and what it actually takes to move the needle — not a one-size-fits-all number.',{color:'#606070',marginTop:'14px',fontSize:'15.5px',lineHeight:'1.75',maxWidth:'480px',margin:'14px auto 0'}));
+  prc.appendChild(prh);
+  const pb=mk('div',{style:{background:'#fff',borderRadius:'22px',padding:'52px 48px',border:'1px solid rgba(0,0,0,.05)',boxShadow:'0 8px 48px rgba(0,0,0,.07)'}});
+  const models=mk('div',{style:{display:'grid',gridTemplateColumns:'repeat(auto-fit,minmax(180px,1fr))',gap:'16px',marginBottom:'40px'}});
+  [{ic:'ti-rocket',t:'Growth Retainer',d:'Monthly management for brands ready to build a creator program and scale consistently.'},{ic:'ti-chart-arrows-vertical',t:'Performance Partnership',d:'Revenue-share aligned model for brands with proven product-market fit and commission-friendly margins.'},{ic:'ti-bolt',t:'Campaign-Based',d:'Project scoped for brands wanting a specific influencer or UGC campaign without a long-term commitment.'}].forEach(m=>{
+    const mc=mk('div',{style:{background:'var(--cream)',borderRadius:'16px',padding:'24px 22px',border:'1px solid rgba(0,0,0,.06)'}});
+    const ib=mk('div',{style:{width:'40px',height:'40px',borderRadius:'12px',background:'linear-gradient(135deg,rgba(232,67,122,.12),rgba(124,58,237,.08))',display:'flex',alignItems:'center',justifyContent:'center',marginBottom:'14px',color:'var(--pink)'}});
+    ib.appendChild(mk('i',{class:`ti ${m.ic}`,style:{fontSize:'18px'}}));mc.appendChild(ib);
+    mc.appendChild(mk('div',{style:{fontWeight:'700',fontSize:'14.5px',color:'var(--text)',marginBottom:'8px'}},m.t));
+    mc.appendChild(mk('p',{style:{fontSize:'13px',color:'#606070',lineHeight:'1.7',margin:'0'}},m.d));
+    models.appendChild(mc);
+  });
+  pb.appendChild(models);
+  const ing=mk('div',{style:{borderTop:'1px solid rgba(0,0,0,.06)',paddingTop:'32px',marginBottom:'36px'}});
+  ing.appendChild(mk('div',{style:{fontSize:'10px',fontWeight:'700',letterSpacing:'2px',textTransform:'uppercase',color:'#bbb',marginBottom:'16px'}},'Every engagement includes'));
+  const incg=mk('div',{style:{display:'grid',gridTemplateColumns:'1fr 1fr',gap:'10px'}});
+  ['Full creator campaign strategy & management','Influencer sourcing, vetting & outreach','UGC content production pipelines','Affiliate & commission program setup','TikTok Shop creator campaigns','Instagram & YouTube integrations','Ambassador program development','Creator contract negotiation','Campaign tracking & attribution','Monthly reporting & optimization'].forEach(s=>{
+    const i=mk('div',{style:{display:'flex',alignItems:'flex-start',gap:'9px',fontSize:'13.5px',color:'#4e4e62'}});
+    i.innerHTML=`<i class="ti ti-check" style="color:var(--pink);margin-top:2px;flex-shrink:0;font-size:13px"></i>${s}`;incg.appendChild(i);
+  });
+  ing.appendChild(incg);pb.appendChild(ing);
+  const pbc=d('',{textAlign:'center'});
+  pbc.appendChild(btn('Book a Strategy Call','bg lg',()=>go('brand-form')));
+  pbc.appendChild(mk('p',{style:{color:'#bbb',fontSize:'12.5px',marginTop:'12px',lineHeight:'1.6'}},"We review every brand individually. Book a call and we'll put together a proposal built around your specific goals."));
+  pb.appendChild(pbc);prc.appendChild(pb);prs.appendChild(prc);root.appendChild(prs);
+
+  // Process
+  const pps=mk('section',{class:'sec'});const ppc=mk('div',{class:'wm'});
+  const pph=d('',{textAlign:'center',marginBottom:'56px'});
+  pph.appendChild(ew('How It Works'));pph.appendChild(mk('h2',{style:{fontSize:'clamp(24px,3.8vw,44px)',fontWeight:'800',letterSpacing:'-1.5px',color:'var(--text)'}},'A proven process. Serious results.'));
+  ppc.appendChild(pph);const ppg=mk('div',{class:'g2'});
+  [{n:'01',ic:'ti-phone-call',t:'Discovery Call',d:'We deep-dive your brand, goals, margins, and current marketing to understand the full picture.'},{n:'02',ic:'ti-chess',t:'Strategy Build',d:'Custom creator campaign strategy built around your target customer, AOV, and revenue goals.'},{n:'03',ic:'ti-users-group',t:'Creator Matching',d:'We source and vet creators from our network aligned with your brand, audience, and aesthetic.'},{n:'04',ic:'ti-rocket',t:'Campaign Launch',d:'Contracts issued, briefs written, creators activated. We manage every single deliverable.'},{n:'05',ic:'ti-chart-arrows-vertical',t:'Track & Optimize',d:"Clear reporting tied to revenue impact. We cut what doesn't work and scale what does."},{n:'06',ic:'ti-infinity',t:'Scale',d:'Build a creator ecosystem that compounds over time — not a one-off campaign.'}].forEach(pr=>{
+    const card=mk('div',{class:'cc',style:{padding:'26px 28px',display:'flex',gap:'18px',alignItems:'flex-start'}});
+    const ib=mk('div',{style:{width:'46px',height:'46px',borderRadius:'14px',background:'linear-gradient(135deg,#e8437a,#7c3aed)',display:'flex',alignItems:'center',justifyContent:'center',flexShrink:'0',color:'#fff'}});
+    ib.appendChild(mk('i',{class:`ti ${pr.ic}`,style:{fontSize:'20px'}}));card.appendChild(ib);
+    const t=mk('div',{});
+    t.appendChild(mk('div',{style:{fontSize:'9.5px',fontWeight:'700',letterSpacing:'2px',color:'var(--pink)',textTransform:'uppercase',marginBottom:'5px'}},pr.n));
+    t.appendChild(mk('h3',{style:{fontSize:'16px',fontWeight:'700',color:'var(--text)',marginBottom:'6px'}},pr.t));
+    t.appendChild(p(pr.d,{fontSize:'13.5px',margin:'0'}));card.appendChild(t);ppg.appendChild(card);
+  });
+  ppc.appendChild(ppg);pps.appendChild(ppc);root.appendChild(pps);
+  root.appendChild(mk('hr',{class:'hrl'}));
+
+  // Reviews
+  const rvs=mk('section',{class:'sec',style:{background:'var(--cream2)'}});const rvc=mk('div',{class:'w'});
+  const rvh=d('',{textAlign:'center',marginBottom:'52px'});
+  rvh.appendChild(ew('Brand Reviews'));rvh.appendChild(mk('h2',{style:{fontSize:'clamp(24px,3.8vw,44px)',fontWeight:'800',letterSpacing:'-1.5px',color:'var(--text)'}},'What our partners say.'));
+  rvc.appendChild(rvh);const rvg=mk('div',{class:'g3'});
+  REVIEWS.forEach(r=>rvg.appendChild(revCard(r,false)));rvc.appendChild(rvg);rvs.appendChild(rvc);root.appendChild(rvs);
+
+  // Partners
+  const pts=mk('section',{class:'sec'});const ptc=mk('div',{class:'wm'});
+  const pth=d('',{textAlign:'center',marginBottom:'44px'});
+  pth.appendChild(ew('Our Partners'));pth.appendChild(mk('h2',{style:{fontSize:'clamp(24px,3.8vw,44px)',fontWeight:'800',letterSpacing:'-1.5px',color:'var(--text)'}},'Brands we work with.'));
+  ptc.appendChild(pth);ptc.appendChild(logoGrid(false));pts.appendChild(ptc);root.appendChild(pts);
+  root.appendChild(darkCTA('Ready to build your <span class="gt">creator engine?</span>',"Book a 30-minute strategy call. No pressure, no decks.",'Book a Strategy Call','brand-form'));
+  return root;
+};
+
+// CREATORS
+PG.creators=function(){
+  const root=mk('div',{class:'cream-page'});
+  root.appendChild(mk('div',{class:'stripe'}));
+  const hero=mk('div',{class:'cphr'});const hc=mk('div',{class:'ws',style:{textAlign:'center'}});
+  hc.appendChild(ew('For Creators'));
+  const h1=mk('h1',{style:{marginBottom:'22px'}});h1.innerHTML='Get paid to create.<br><span class="gt">On your terms.</span>';hc.appendChild(h1);
+  hc.appendChild(p("IGA is always casting creators for brand campaigns, UGC opportunities, and affiliate programs. Apply once. Get matched continuously.",{fontSize:'17px',color:'#606070',maxWidth:'460px',margin:'0 auto 40px',lineHeight:'1.82'}));
+  hc.appendChild(btn('Apply to the Network','bg lg',()=>go('creator-form')));
+  const sg=mk('div',{class:'g4',style:{gap:'12px',marginTop:'56px'}});
+  [{disp:'$1M+',lbl:'Paid to Creators'},{t:500,pre:'',suf:'+',lbl:'Creators in Network'},{t:4,pre:'',suf:'',lbl:'Active Brand Partners'},{disp:'Always',lbl:'Casting New Creators'}].forEach(s=>sg.appendChild(stCard(s.disp,s.t,s.pre,s.suf,s.lbl,false)));
+  hc.appendChild(sg);hero.appendChild(hc);root.appendChild(hero);
+  root.appendChild(mk('hr',{class:'hrl'}));
+  const ts=mk('section',{class:'sec'});const tc=mk('div',{class:'w'});
+  const th=d('',{textAlign:'center',marginBottom:'56px'});
+  th.appendChild(ew('Opportunities'));th.appendChild(mk('h2',{style:{fontSize:'clamp(24px,3.8vw,44px)',fontWeight:'800',letterSpacing:'-1.5px',color:'var(--text)',marginBottom:'12px'}},'More ways to earn with IGA.'));
+  th.appendChild(p("You don't need a million followers. You need an audience that trusts you.",{color:'#606070',fontSize:'15.5px'}));tc.appendChild(th);
+  const tg=mk('div',{class:'g3'});
+  [{ic:'ti-video',t:'UGC Content',d:'Create brand content used in paid ads and organic social. No big following needed — just authentic, high-quality content.'},{ic:'ti-coin',t:'Affiliate Campaigns',d:'Earn recurring commission on every sale you drive. Our top affiliate creators earn thousands monthly.'},{ic:'ti-handshake',t:'Brand Deals',d:'Flat-rate sponsored content across Instagram, TikTok, YouTube, and beyond. We negotiate on your behalf.'},{ic:'ti-crown',t:'Ambassador Programs',d:'Long-term brand partnerships with enhanced rates, product perks, and ongoing creative collaboration.'},{ic:'ti-shopping-bag',t:'TikTok Shop',d:'Get placed in TikTok Shop affiliate campaigns and earn commission on every product you move.'},{ic:'ti-star',t:'Creator Management',d:'Let IGA handle your brand relationships, contract review, campaign pipeline, and rate negotiation.'}].forEach(t=>{
+    const card=mk('div',{class:'cc',style:{padding:'32px 28px'}});
+    const ib=mk('div',{style:{width:'44px',height:'44px',borderRadius:'13px',background:'linear-gradient(135deg,rgba(124,58,237,.11),rgba(232,67,122,.07))',display:'flex',alignItems:'center',justifyContent:'center',marginBottom:'18px',color:'#7c3aed'}});
+    ib.appendChild(mk('i',{class:`ti ${t.ic}`,style:{fontSize:'20px'}}));card.appendChild(ib);
+    card.appendChild(mk('h3',{style:{fontSize:'16px',fontWeight:'700',color:'var(--text)',marginBottom:'8px'}},t.t));
+    card.appendChild(p(t.d,{fontSize:'13.5px'}));tg.appendChild(card);
+  });
+  tc.appendChild(tg);ts.appendChild(tc);root.appendChild(ts);root.appendChild(mk('hr',{class:'hrl'}));
+  const ws=mk('section',{class:'sec',style:{background:'var(--cream2)'}});const wc=mk('div',{class:'wm'});
+  const wh=d('',{textAlign:'center',marginBottom:'52px'});
+  wh.appendChild(ew('Ideal Creator'));wh.appendChild(mk('h2',{style:{fontSize:'clamp(24px,3.8vw,44px)',fontWeight:'800',letterSpacing:'-1.5px',color:'var(--text)'}},"You're a fit if…"));
+  wc.appendChild(wh);const wg=mk('div',{class:'g2'});
+  ["You create content in any niche on any major platform","You have an engaged audience — size matters less than trust","You're open to commission-based or affiliate campaigns","You want recurring brand relationships, not one-off deals","You're interested in UGC even without a large following","You want professional representation for your brand deals"].forEach(w=>{
+    const i=mk('div',{style:{display:'flex',alignItems:'flex-start',gap:'14px',background:'#fff',border:'1px solid rgba(0,0,0,.05)',borderRadius:'16px',padding:'18px 20px'}});
+    i.innerHTML=`<div style="width:30px;height:30px;border-radius:9px;background:linear-gradient(135deg,#7c3aed,#e8437a);display:flex;align-items:center;justify-content:center;flex-shrink:0"><i class="ti ti-check" style="font-size:13px;color:#fff"></i></div><p style="color:#4e4e62;font-size:14px;line-height:1.72;margin:0;padding-top:3px">${w}</p>`;
+    wg.appendChild(i);
+  });
+  wc.appendChild(wg);ws.appendChild(wc);root.appendChild(ws);
+  const prs=mk('section',{class:'sec'});const prc=mk('div',{class:'wm'});
+  const prh=d('',{textAlign:'center',marginBottom:'52px'});
+  prh.appendChild(ew('How It Works'));prh.appendChild(mk('h2',{style:{fontSize:'clamp(24px,3.8vw,44px)',fontWeight:'800',letterSpacing:'-1.5px',color:'var(--text)'}},'From application to paycheck.'));
+  prc.appendChild(prh);const prl=mk('div',{style:{display:'flex',flexDirection:'column',gap:'12px'}});
+  [{n:1,ic:'ti-send',t:'Apply',d:'Submit your creator application. Takes about 5 minutes.'},{n:2,ic:'ti-eye',t:'Profile Review',d:'Our team reviews your content, platforms, and niche fit.'},{n:3,ic:'ti-target-arrow',t:'Campaign Matching',d:"You're notified when an active campaign fits your profile."},{n:4,ic:'ti-movie',t:'Create & Post',d:'Follow the brand brief, create your content, and submit or post.'},{n:5,ic:'ti-cash',t:'Get Paid',d:'Receive your flat rate or commission. Fast, reliable payouts.'}].forEach(s=>{
+    const i=mk('div',{class:'cc',style:{padding:'20px 24px',display:'flex',alignItems:'center',gap:'18px'}});
+    const ib=mk('div',{style:{width:'46px',height:'46px',borderRadius:'50%',background:'linear-gradient(135deg,#7c3aed,#e8437a)',display:'flex',alignItems:'center',justifyContent:'center',flexShrink:'0',color:'#fff'}});
+    ib.appendChild(mk('i',{class:`ti ${s.ic}`,style:{fontSize:'20px'}}));i.appendChild(ib);
+    const t=mk('div',{});
+    t.appendChild(mk('h3',{style:{fontSize:'16px',fontWeight:'700',color:'var(--text)',marginBottom:'3px'}},s.t));
+    t.appendChild(p(s.d,{fontSize:'13.5px',margin:'0'}));i.appendChild(t);prl.appendChild(i);
+  });
+  prc.appendChild(prl);prs.appendChild(prc);root.appendChild(prs);
+  root.appendChild(darkCTA("Ready to start earning?<br><span class='gt'>Apply today.</span>","We're always casting. There's no wrong time to apply.",'Apply to the Creator Network','creator-form'));
+  return root;
+};
+
+// ABOUT
+PG.about=function(){
+  const root=mk('div',{class:'cream-page'});
+  root.appendChild(mk('div',{class:'stripe'}));
+  const hero=mk('div',{class:'cphr',style:{paddingBottom:'72px'}});const hc=mk('div',{class:'ws',style:{textAlign:'center'}});
+  hc.appendChild(ew('About IGA'));
+  const h1=mk('h1',{style:{marginBottom:'22px'}});h1.innerHTML='We exist to connect<br><span class="gt">brands and culture.</span>';hc.appendChild(h1);
+  hc.appendChild(p('Influencer Global Agency was built on a simple belief: the right creator, speaking to the right audience, with the right message, generates revenue. Not just buzz.',{fontSize:'17px',color:'#606070',maxWidth:'480px',margin:'0 auto',lineHeight:'1.82'}));
+  hero.appendChild(hc);root.appendChild(hero);root.appendChild(mk('hr',{class:'hrl'}));
+  const sec=mk('section',{class:'sec'});const cont=mk('div',{class:'wm'});
+  const sb=mk('div',{style:{background:'#fff',borderRadius:'20px',padding:'40px',border:'1px solid rgba(0,0,0,.05)',boxShadow:'0 4px 32px rgba(0,0,0,.06)',marginBottom:'56px',display:'grid',gridTemplateColumns:'repeat(auto-fit,minmax(130px,1fr))',gap:'24px',textAlign:'center'}});
+  [{d:'8-Figure',l:'Revenue Generated'},{d:'$1M+',l:'Creator Payouts'},{d:'500+',l:'Creator Partners'},{d:'4',l:'Brand Partners'}].forEach(s=>{
+    sb.appendChild(mk('div',{},mk('div',{style:{fontSize:'34px',fontWeight:'900',background:'var(--grad)',WebkitBackgroundClip:'text',WebkitTextFillColor:'transparent'}},s.d),mk('div',{style:{fontSize:'10px',color:'#9a9ab0',textTransform:'uppercase',letterSpacing:'1px',fontWeight:'600',marginTop:'6px'}},s.l)));
+  });
+  cont.appendChild(sb);
+  const two=mk('div',{style:{display:'grid',gridTemplateColumns:'1fr 1fr',gap:'48px',alignItems:'start'}});
+  const left=mk('div',{});
+  left.appendChild(ew('Our Mission'));
+  left.appendChild(mk('h2',{style:{fontSize:'28px',fontWeight:'800',letterSpacing:'-1.2px',color:'var(--text)',marginBottom:'20px',lineHeight:'1.2'}},'Performance marketing through the power of authentic creators.'));
+  left.appendChild(p('IGA was founded to bridge the gap between brands that need growth and creators who deserve to be compensated for their real influence. Too many agencies focus on follower counts. We focus on revenue.',{marginBottom:'14px'}));
+  left.appendChild(p('We are selective about the brands we take on and the creators we place. This lets us maintain quality, move quickly, and deliver outcomes that actually matter.'));
+  two.appendChild(left);
+  const right=mk('div',{style:{display:'flex',flexDirection:'column',gap:'12px'}});
+  [{ic:'ti-chart-bar',t:'Revenue First',d:"Everything we do is measured against one thing: does it drive revenue?"},{ic:'ti-heart-handshake',t:'Real Relationships',d:'We build genuine connections between brands and creators — not transactional one-offs.'},{ic:'ti-eye',t:'Radical Transparency',d:"You always know what's happening with your campaigns. No mystery reports."},{ic:'ti-bolt',t:'Speed & Accountability',d:'Campaigns launch within days. And we own the results either way.'}].forEach(v=>{
+    const vc=mk('div',{style:{background:'#fff',border:'1px solid rgba(0,0,0,.05)',borderRadius:'16px',padding:'20px 22px',display:'flex',gap:'14px',alignItems:'flex-start',boxShadow:'0 2px 12px rgba(0,0,0,.04)'}});
+    const ib=mk('div',{style:{width:'38px',height:'38px',borderRadius:'11px',background:'linear-gradient(135deg,rgba(232,67,122,.1),rgba(124,58,237,.07))',display:'flex',alignItems:'center',justifyContent:'center',flexShrink:'0',color:'var(--pink)'}});
+    ib.appendChild(mk('i',{class:`ti ${v.ic}`,style:{fontSize:'18px'}}));vc.appendChild(ib);
+    const vt=mk('div',{});vt.appendChild(mk('div',{style:{fontSize:'15px',fontWeight:'700',color:'var(--text)',marginBottom:'4px'}},v.t));vt.appendChild(p(v.d,{fontSize:'13.5px',margin:'0'}));vc.appendChild(vt);right.appendChild(vc);
+  });
+  two.appendChild(right);cont.appendChild(two);sec.appendChild(cont);root.appendChild(sec);
+  const ds=mk('section',{class:'sec',style:{background:'var(--dark)'}});const dc=mk('div',{class:'ws',style:{textAlign:'center'}});
+  dc.appendChild(mk('h2',{style:{fontSize:'clamp(24px,3.5vw,42px)',fontWeight:'900',color:'#fff',letterSpacing:'-1.5px',marginBottom:'28px'}},'Ready to work together?'));
+  const br=d('',{display:'flex',gap:'12px',justifyContent:'center',flexWrap:'wrap'});
+  br.appendChild(btn('Work With IGA as a Brand','bg lg',()=>go('brand-form')));br.appendChild(btn('Join as a Creator','bgh md',()=>go('creator-form')));
+  dc.appendChild(br);ds.appendChild(dc);root.appendChild(ds);
+  return root;
+};
+
+// CASE STUDIES
+PG['case-studies']=function(){
+  const root=mk('div',{class:'cream-page'});root.appendChild(mk('div',{class:'stripe'}));
+  const hero=mk('div',{class:'cphr',style:{paddingBottom:'72px'}});const hc=mk('div',{class:'ws',style:{textAlign:'center'}});
+  hc.appendChild(ew('Our Work'));const h1=mk('h1',{style:{marginBottom:'18px'}});h1.innerHTML='Results that speak<br><span class="gt">for themselves.</span>';hc.appendChild(h1);
+  hc.appendChild(p('Campaign breakdowns from our current brand partners. Real numbers, real outcomes.',{fontSize:'17px',color:'#606070',lineHeight:'1.8',maxWidth:'440px',margin:'0 auto'}));
+  hero.appendChild(hc);root.appendChild(hero);root.appendChild(mk('hr',{class:'hrl'}));
+  const sec=mk('section',{class:'sec'});const cont=mk('div',{class:'wm'});
+  const list=mk('div',{style:{display:'flex',flexDirection:'column',gap:'22px'}});
+  [{brand:'Sol Brush',tag:'UGC + TikTok Shop',result:'+340% revenue in 60 days',color:'#f97316',icon:'ti-brush',desc:'We launched a TikTok Shop creator program for Sol Brush, recruiting 28 micro-creators in the beauty space. Within 60 days, organic TikTok content was driving 340% more revenue than their paid ad campaigns.',tags:['TikTok Shop','Micro-creators','UGC','Beauty']},{brand:'Rae Basics',tag:'Affiliate Program',result:'$180K in affiliate revenue Q1',color:'#7c3aed',icon:'ti-sparkles',desc:'Rae Basics had no affiliate infrastructure. We designed a commission structure, recruited 65 lifestyle creators, and built a full tracking and payout system. Q1 affiliate revenue: $180,000.',tags:['Affiliate','Commission','Lifestyle','Wellness']},{brand:'Accident Avenue',tag:'Influencer Campaign',result:'4.2x ROAS on influencer spend',color:'#e8437a',icon:'ti-road',desc:"We identified 12 mid-tier creators in the streetwear space who aligned with Accident Avenue's brand voice. The campaign averaged a 4.2x return on influencer spend across all content formats.",tags:['Instagram','YouTube','Streetwear','Brand Deals']},{brand:'Miss Debbie',tag:'Ambassador Program',result:'5x monthly revenue in 90 days',color:'#f59e0b',icon:'ti-heart',desc:'Miss Debbie needed creators who genuinely believed in the brand. We built a curated ambassador program of 22 faith-and-family creators. Monthly ambassador-driven revenue grew 5x in 90 days.',tags:['Ambassadors','Family','Faith','Long-term']}].forEach(c=>{
+    const card=mk('div',{style:{background:'#fff',border:'1px solid rgba(0,0,0,.05)',borderRadius:'22px',overflow:'hidden',boxShadow:'0 4px 20px rgba(0,0,0,.05)',transition:'all .28s'}});
+    card.addEventListener('mouseenter',()=>{card.style.transform='translateY(-4px)';card.style.boxShadow='0 20px 56px rgba(0,0,0,.11)';});
+    card.addEventListener('mouseleave',()=>{card.style.transform='';card.style.boxShadow='0 4px 20px rgba(0,0,0,.05)';});
+    card.appendChild(mk('div',{style:{height:'4px',background:`linear-gradient(90deg,${c.color},${c.color}66)`}}));
+    const body=mk('div',{style:{padding:'32px 36px'}});
+    const top=d('',{display:'flex',justifyContent:'space-between',alignItems:'flex-start',flexWrap:'wrap',gap:'16px',marginBottom:'18px'});
+    const lft=d('',{display:'flex',alignItems:'center',gap:'14px'});
+    lft.appendChild(mk('div',{style:{width:'50px',height:'50px',borderRadius:'14px',background:`${c.color}14`,display:'flex',alignItems:'center',justifyContent:'center',color:c.color}},mk('i',{class:`ti ${c.icon}`,style:{fontSize:'22px'}})));
+    const lt=mk('div',{});
+    lt.appendChild(mk('div',{style:{fontSize:'10px',fontWeight:'700',letterSpacing:'2px',color:c.color,textTransform:'uppercase',marginBottom:'3px'}},c.tag));
+    lt.appendChild(mk('h3',{style:{fontWeight:'800',fontSize:'21px',color:'var(--text)',letterSpacing:'-.5px',margin:'0'}},c.brand));
+    lft.appendChild(lt);top.appendChild(lft);
+    const res=mk('div',{style:{background:`${c.color}0e`,border:`1px solid ${c.color}20`,borderRadius:'12px',padding:'12px 20px',textAlign:'right'}});
+    res.innerHTML=`<div style="font-size:9.5px;font-weight:700;color:${c.color};letter-spacing:1px;text-transform:uppercase;margin-bottom:3px">Key Result</div><div style="font-size:16px;font-weight:800;color:var(--text)">${c.result}</div>`;
+    top.appendChild(res);body.appendChild(top);
+    body.appendChild(p(c.desc,{color:'#606070',fontSize:'14.5px',lineHeight:'1.8',marginBottom:'18px'}));
+    const tags=d('',{display:'flex',flexWrap:'wrap',gap:'7px'});
+    c.tags.forEach(t=>tags.appendChild(mk('span',{style:{background:`${c.color}0e`,border:`1px solid ${c.color}20`,color:c.color,borderRadius:'100px',padding:'5px 13px',fontSize:'11.5px',fontWeight:'600'}},t)));
+    body.appendChild(tags);card.appendChild(body);list.appendChild(card);
+  });
+  cont.appendChild(list);sec.appendChild(cont);root.appendChild(sec);
+  root.appendChild(darkCTA("Want results like these?",'Book a strategy call and let\'s build your creator program.','Book a Brand Strategy Call','brand-form'));
+  return root;
+};
+
+// BRAND FORM
+PG['brand-form']=function(){
+  return buildFormPage({
+    eyebrow:'Brand Partnership Application',title:'Book Your Brand Strategy Call',
+    subtitle:"Tell us about your brand and goals. Our team will review and reach out within 48 hours to schedule your call.",
+    orbColor:'#e8437a',orbSide:'right',submitLabel:'Submit Brand Application →',dest:'brand-ty',isBrand:true,
+    validate(D){if(!D.brandName||!D.email||!D.contactName){showToast('Please fill all required fields.');return false;}return true;},
+    build(sh,fi,fsel,fchips,grid,block){
+      sh('Company Info');
+      grid(fi('Brand Name','brandName','text','Your Brand'),fi('Website','website','text','https://yourbrand.com'));
+      grid(fi('Your Name','contactName','text','Jane Smith'),fi('Email','email','email','jane@brand.com'));
+      grid(fi('Phone','phone','tel','+1 (555) 000-0000'),fi('Role / Title','role','text','Founder, CMO…'));
+      grid(fi('Industry / Category','industry','text','Beauty, Fitness…'),fsel('Monthly Revenue','monthlyRevenue',['Under $10K','$10K–$50K','$50K–$100K','$100K–$500K','$500K–$1M','$1M+']));
+      grid(fsel('Influencer / Affiliate Status','affiliateStatus',['None','Just starting','Active but underperforming','Active and performing well']),fsel('Monthly Ad Spend','adSpend',['Under $1K','$1K–$5K','$5K–$20K','$20K–$50K','$50K+']));
+      grid(fi('Average Order Value','aov','text','$65'));
+      fchips('Current Marketing Channels','marketingChannels',['Meta Ads','Google Ads','Email','SEO','TikTok Ads','Influencer','Affiliate','Organic Social','SMS','Other']);
+      fchips('Desired Campaign Types','campaignTypes',['UGC','Affiliate','Influencer Posts','Ambassador Program','TikTok Shop','Instagram','YouTube','Long-Term Partnerships','Product Seeding','Other']);
+      sh('Goals & Context');
+      block(fi('Best-Selling Products','bestProducts','textarea','Describe your top 1–3 products…'));
+      block(fi('Target Customer','targetCustomer','textarea','Age, gender, interests, lifestyle…'));
+      block(fi('Main Goals','mainGoals','textarea','What do you most want to achieve?'));
+      block(fi('Biggest Bottlenecks','bottlenecks','textarea','What\'s holding your brand back?'));
+      block(fi('Types of Creators You Want','creatorTypes','textarea','Niche, platform, size, vibe…'));
+      sh('Readiness');
+      grid(fsel('Budget Readiness','budgetReady',['Ready now','Within 30 days','Within 60–90 days','Just exploring']),fsel('Timeline to Start','timeline',['ASAP','Within 2 weeks','This month','Next month','Not sure yet']));
+      block(fi('Anything else?','notes','textarea','Additional context…'));
+    }
+  });
+};
+
+// CREATOR FORM
+PG['creator-form']=function(){
+  const root=mk('div',{style:{minHeight:'100vh',padding:'100px 20px 80px',background:'var(--dark)',position:'relative'}});
+  root.appendChild(mk('div',{class:'orb',style:{width:'440px',height:'440px',background:'radial-gradient(#7c3aed,transparent)',top:'-80px',left:'-80px',position:'absolute',pointerEvents:'none'}}));
+  const cont=mk('div',{style:{maxWidth:'680px',margin:'0 auto',position:'relative',zIndex:'1'}});
+  const hd=d('',{textAlign:'center',marginBottom:'52px'});
+  hd.appendChild(mk('span',{class:'ew'},'Creator Application'));
+  hd.appendChild(mk('h1',{style:{fontSize:'clamp(28px,4vw,44px)',fontWeight:'900',color:'#fff',letterSpacing:'-1.5px',lineHeight:'1.08',marginBottom:'12px'}},'Join the IGA Creator Network'));
+  hd.appendChild(p('Apply once. Get matched with brand campaigns continuously.',{color:'rgba(255,255,255,.42)',fontSize:'15px',lineHeight:'1.75'}));
+  cont.appendChild(hd);
+  const fw=mk('div',{class:'fw'});
+  const D={consent:false};const CS={};
+  function sh(t){fw.appendChild(mk('div',{class:'fsh'},t));}
+  function fi(label,key,type='text',ph=''){
+    D[key]='';const w=mk('div',{class:'ffld'});w.appendChild(mk('label',{class:'fl'},label));
+    const i=mk(type==='textarea'?'textarea':'input',{class:'fi',placeholder:ph});
+    if(type!=='textarea')i.type=type;else{i.rows=3;i.style.resize='vertical';}
+    i.addEventListener('input',()=>{D[key]=i.value;});w.appendChild(i);return w;
+  }
+  function fsel(label,key,opts){
+    D[key]='';const w=mk('div',{class:'ffld'});w.appendChild(mk('label',{class:'fl'},label));
+    const s=mk('select',{class:'fse'});s.appendChild(mk('option',{value:''},'Select…'));
+    opts.forEach(o=>s.appendChild(mk('option',{value:o},o)));s.addEventListener('change',()=>{D[key]=s.value;});w.appendChild(s);return w;
+  }
+  function fchips(label,key,opts){
+    CS[key]=[];D[key]=[];const w=mk('div',{style:{marginBottom:'22px'}});w.appendChild(mk('label',{class:'fl'},label));
+    const g=mk('div',{class:'chg'});
+    opts.forEach(o=>{const c=mk('button',{class:'ch',type:'button'},o);c.addEventListener('click',()=>{const on=CS[key].includes(o);if(on){CS[key]=CS[key].filter(v=>v!==o);c.classList.remove('on');}else{CS[key].push(o);c.classList.add('on');}D[key]=[...CS[key]];});g.appendChild(c);});
+    w.appendChild(g);fw.appendChild(w);
+  }
+  function grid(...fields){const g=mk('div',{class:'fgr'});fields.forEach(f=>{if(f)g.appendChild(f);});fw.appendChild(g);}
+  function block(f){fw.appendChild(f);}
+  sh('Personal Info');
+  grid(fi('Full Name','fullName','text','Your Name'),fi('Email','email','email','you@email.com'));
+  grid(fi('Phone','phone','tel','+1 (555) 000-0000'),fi('City / State / Country','location','text','Los Angeles, CA'));
+  grid(fsel('Age Range','ageRange',['18–24','25–34','35–44','45–54','55+']));
+  sh('Social Platforms');
+  grid(fi('Instagram Handle','instagram','text','@handle'),fi('TikTok Handle','tiktok','text','@handle'));
+  grid(fi('YouTube Channel','youtube','text','Channel or URL'),fi('Facebook','facebook','text','Profile or page URL'));
+  grid(fi('X / Twitter','twitter','text','@handle'),fi('LinkedIn','linkedin','text','Profile URL'));
+  grid(fi('Other Platforms','otherPlatforms','text','Substack, Pinterest…'),fi('Total Following (all platforms)','totalFollowing','text','e.g. 45,000'));
+  grid(fi('Avg Views per Post','avgViews','text','e.g. 10,000'),fi('Engagement Rate','engagementRate','text','e.g. 4.2%'));
+  fchips('Your Content Categories','categories',['Beauty','Fashion','Fitness','Health/Wellness','Faith','Family','Lifestyle','Business','Finance','Tech','Food','Travel','Home','Parenting','Comedy','Education','Other']);
+  fchips('Campaign Interests','campaignInterests',['UGC','Affiliate','Brand Deals','Commission-Based','Flat Rate','Long-Term Management','Ambassador Programs','Product Seeding','TikTok Shop','Other']);
+  sh('Experience');
+  grid(fsel('Worked with brands before?','workedWithBrands',['Yes, many times','Yes, a few times','Once or twice','Not yet']),fi('Past Brands / Partnerships','pastBrands','text','Brand names…'));
+  grid(fi('Media Kit Link','mediaKit','text','https://…'),fi('Portfolio Link','portfolio','text','https://…'));
+  grid(fi('Typical Rates','typicalRates','text','e.g. $500/reel'),fsel('Open to commission-only?','openCommission',['Yes','No','Maybe']));
+  grid(fsel('Open to gifted/product?','openGifted',['Yes','No','Depends']),fsel('Open to creator management?','openManagement',['Yes','No','Tell me more']));
+  block(fi('Brands you WANT to work with','brandTypes','textarea','Niches, industries, specific brands…'));
+  block(fi("Brands you WON'T work with",'excludeBrands','textarea','Any hard restrictions…'));
+  block(fi('Why do you want to work with IGA?','whyIGA','textarea','Tell us about your goals…'));
+  sh('Logistics (Optional)');
+  grid(fi('Shipping Address','shippingAddress','text','For gifted campaigns'),fi('Payment Preference','paymentPref','text','PayPal, Venmo, ACH…'));
+  grid(fsel('Preferred Contact Method','contactMethod',['Email','Text / SMS','Instagram DM','TikTok DM','WhatsApp']));
+  const cr=d('',{display:'flex',alignItems:'flex-start',gap:'14px',background:'rgba(255,255,255,.03)',border:'1px solid rgba(255,255,255,.07)',borderRadius:'13px',padding:'18px 20px',marginTop:'8px'});
+  const cb=mk('input',{type:'checkbox',id:'cbc',style:{marginTop:'2px',width:'15px',height:'15px',accentColor:'var(--pink)',flexShrink:'0',cursor:'pointer'}});
+  cb.addEventListener('change',()=>{D.consent=cb.checked;});
+  const cbl=mk('label',{for:'cbc',style:{color:'rgba(255,255,255,.48)',fontSize:'13px',lineHeight:'1.65',cursor:'pointer'}});
+  cbl.innerHTML='I consent to Influencer Global Agency contacting me about brand campaigns and opportunities. I can opt out at any time. I agree to the <span style="color:var(--pink);cursor:pointer" onclick="go(\'creator-agreement\')">Creator Agreement</span>.';
+  cr.appendChild(cb);cr.appendChild(cbl);fw.appendChild(cr);
+  const sbtn=mk('button',{class:'btn bg lg',style:{width:'100%',borderRadius:'14px',marginTop:'28px',justifyContent:'center',background:'linear-gradient(135deg,#7c3aed,#e8437a,#f97316)'}},'Submit Creator Application →');
+  sbtn.addEventListener('click',async()=>{
+    if(!D.fullName||!D.email){showToast('Please fill required fields.');return;}
+    if(!D.consent){showToast('Please agree to the creator agreement.');return;}
+    await submitForm(D,sbtn,'creator-ty',false);
+  });
+  fw.appendChild(sbtn);
+  const ln=mk('p',{style:{textAlign:'center',color:'rgba(255,255,255,.2)',fontSize:'11.5px',marginTop:'12px'}});
+  ln.innerHTML='<i class="ti ti-lock" style="font-size:10px;margin-right:4px"></i>Your information is secure and will never be shared without your consent.';
+  fw.appendChild(ln);
+  cont.appendChild(fw);root.appendChild(cont);return root;
+};
+
+// THANK YOU
+function tyPage(title,sub){
+  return function(){
+    const root=mk('div',{class:'ty'});
+    const card=mk('div',{class:'gl',style:{maxWidth:'440px',width:'100%',textAlign:'center',padding:'64px 48px',borderRadius:'22px',margin:'0 auto'}});
+    const ic=mk('div',{style:{width:'64px',height:'64px',background:'linear-gradient(135deg,#e8437a,#7c3aed)',borderRadius:'50%',display:'flex',alignItems:'center',justifyContent:'center',margin:'0 auto 28px'}});
+    ic.innerHTML='<i class="ti ti-check" style="font-size:28px;color:#fff"></i>';card.appendChild(ic);
+    card.appendChild(mk('h2',{style:{fontSize:'26px',fontWeight:'900',color:'#fff',marginBottom:'12px',letterSpacing:'-.5px'}},title));
+    card.appendChild(p(sub,{color:'rgba(255,255,255,.48)',fontSize:'14.5px',lineHeight:'1.78',marginBottom:'36px'}));
+    card.appendChild(mk('button',{class:'btn bgh md',onclick:()=>go('home')},'← Back to Home'));
+    root.appendChild(card);return root;
+  };
+}
+PG['brand-ty']=tyPage('Application Received!','Our team will review your brand profile and reach out within 1–2 business days to schedule your strategy call.');
+PG['creator-ty']=tyPage('Welcome to IGA!','We\'ll review your profile and reach out as soon as a brand campaign matches your niche and audience. Keep creating!');
+
+// LEGAL
+function legalPage(title,html){
+  return function(){
+    const root=mk('div',{class:'cream-page'});root.appendChild(mk('div',{class:'stripe'}));
+    const wrap=mk('div',{style:{padding:'128px 48px 96px'}});const cont=mk('div',{style:{maxWidth:'700px',margin:'0 auto'}});
+    const back=mk('button',{style:{display:'flex',alignItems:'center',gap:'8px',background:'none',border:'none',cursor:'pointer',color:'#9a9ab0',fontSize:'13px',fontWeight:'600',marginBottom:'40px',fontFamily:'Inter,sans-serif',padding:'0'}});
+    back.innerHTML='<i class="ti ti-arrow-left" style="font-size:13px"></i>Back to Home';back.addEventListener('click',()=>go('home'));cont.appendChild(back);
+    cont.appendChild(mk('h1',{style:{fontSize:'clamp(26px,4vw,42px)',fontWeight:'900',color:'var(--text)',letterSpacing:'-1.5px',marginBottom:'8px'}},title));
+    cont.appendChild(p('Last updated: June 1, 2025 · Influencer Global Agency LLC',{color:'#9a9ab0',fontSize:'13px',marginBottom:'52px'}));
+    cont.appendChild(mk('div',{class:'lc2',html}));wrap.appendChild(cont);root.appendChild(wrap);return root;
+  };
+}
+PG.privacy=legalPage('Privacy Policy',`<p>Influencer Global Agency LLC ("IGA") is committed to protecting your privacy. This Policy explains how we collect, use, disclose, and safeguard your information.</p><h2>1. Information We Collect</h2><p>We collect information you voluntarily provide including contact details, business information, social media handles, content preferences, and payment methods (method only — no financial account numbers).</p><h2>2. How We Use Your Information</h2><ul><li>To respond to inquiries and process applications</li><li>To match brands with creators for campaigns</li><li>To send campaign notifications (with consent)</li><li>To improve our website and services</li><li>To comply with legal obligations</li></ul><h2>3. How We Share Your Information</h2><p>We do not sell your personal information. We share it only with brand partners (for active campaign matching, with prior consent) and service providers necessary to operate our business.</p><h2>4. Data Retention</h2><p>Creator profiles are retained for active campaign matching. Brand applications are retained for 12 months.</p><h2>5. Your Rights</h2><p>You may request access, correction, deletion, or restriction of your personal data. Contact: <a href="mailto:privacy@influencerglobalagency.com">privacy@influencerglobalagency.com</a></p><h2>6. California Privacy Rights (CCPA)</h2><p>California residents may request disclosure of personal data collected, request deletion, and opt out of any sale of personal information. We do not sell personal information.</p><h2>7. Cookies</h2><p>We use cookies to enhance your experience and analyze site traffic. You can control cookies through your browser settings.</p><h2>8. Security</h2><p>We implement industry-standard security measures. No internet transmission is 100% secure.</p><h2>9. Children's Privacy</h2><p>Our services are not directed to individuals under 18. We do not knowingly collect data from minors.</p><h2>10. Contact</h2><p><a href="mailto:privacy@influencerglobalagency.com">privacy@influencerglobalagency.com</a></p>`);
+
+PG.terms=legalPage('Terms of Service',`<p>By accessing our website or engaging our services, you agree to these Terms.</p><h2>1. Services</h2><p>IGA provides influencer marketing, creator management, UGC production, and affiliate program management. Specific deliverables, fees, and timelines are defined in individual service agreements.</p><h2>2. Brand Partner Terms</h2><ul><li>Monthly retainer fees are due on the first of each month. Invoices are net-15.</li><li>Brand Partners may terminate with 30 days written notice.</li><li>Brand Partners must ensure their products and marketing claims comply with applicable laws and FTC guidelines.</li><li>Brand Partners grant IGA a non-exclusive license to use brand assets solely for campaign execution.</li></ul><h2>3. Creator Partner Terms</h2><ul><li>Creators are independent contractors, not employees of IGA.</li><li>Campaign-specific terms are defined in individual campaign briefs.</li><li>Creators must disclose paid partnerships per FTC guidelines and platform policies.</li><li>IGA reserves the right to remove any creator from the network at its discretion.</li></ul><h2>4. Intellectual Property</h2><p>All IGA website content is property of Influencer Global Agency LLC. UGC content rights are governed by individual campaign agreements.</p><h2>5. Disclaimer of Warranties</h2><p>Services are provided "as is." Past results are not guarantees of future performance.</p><h2>6. Limitation of Liability</h2><p>IGA's total liability shall not exceed fees paid in the three months preceding any claim.</p><h2>7. Governing Law</h2><p>These Terms are governed by US law. Disputes resolved through AAA binding arbitration.</p><h2>8. FTC Compliance</h2><p>All creators must clearly disclose sponsored content per FTC guidelines.</p><h2>9. Contact</h2><p><a href="mailto:legal@influencerglobalagency.com">legal@influencerglobalagency.com</a></p>`);
+
+PG.accessibility=legalPage('Accessibility Statement',`<p>IGA is committed to ensuring our website is accessible to everyone, including people with disabilities. We strive to meet WCAG 2.1 Level AA guidelines.</p><h2>Our Commitment</h2><ul><li>Descriptive alt text on all images</li><li>Sufficient color contrast throughout</li><li>Full keyboard navigation support</li><li>Properly labeled, screen-reader-compatible forms</li><li>Semantic HTML structure throughout</li></ul><h2>Known Limitations</h2><p>Decorative background animations may affect users with motion sensitivity. We recommend enabling your OS "Reduce Motion" setting.</p><h2>Contact</h2><p><a href="mailto:accessibility@influencerglobalagency.com">accessibility@influencerglobalagency.com</a> — we respond within 2 business days.</p>`);
+
+PG['creator-agreement']=legalPage('Creator Agreement Overview',`<p>Full agreements are provided per campaign and must be signed before activation.</p><h2>Independent Contractor Status</h2><p>All creators are independent contractors. You are responsible for your own taxes. US-based creators earning over $600 annually receive a 1099.</p><h2>Payment Terms</h2><ul><li><strong>Flat-rate campaigns:</strong> Payment within 30 days of approved delivery</li><li><strong>Affiliate/commission:</strong> Monthly payouts, $25 minimum threshold</li><li><strong>Gifted campaigns:</strong> Products at no cost; no cash compensation unless agreed</li></ul><h2>Content Rights</h2><p>You grant the brand a non-exclusive, royalty-free license to use your content for paid and organic marketing for up to 12 months unless otherwise specified.</p><h2>Disclosure Requirements</h2><p>All branded content must be clearly disclosed per FTC guidelines. Non-disclosure may result in removal from the IGA network.</p><h2>Exclusivity</h2><p>Some campaigns include exclusivity clauses (typically 30–90 days), clearly stated before acceptance.</p><h2>Questions?</h2><p><a href="mailto:creators@influencerglobalagency.com">creators@influencerglobalagency.com</a></p>`);
+
+// INIT
+go('home');
+</script>
+</body>
+</html>
