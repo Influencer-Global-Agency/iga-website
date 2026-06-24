@@ -1,17 +1,17 @@
 {
-  "rewrites": [
-    {"source": "/(.*)", "has": [{"type": "host", "value": "app.influencerglobalagency.com"}], "destination": "/subdomains/app/$1"},
-    {"source": "/(.*)", "has": [{"type": "host", "value": "portal.influencerglobalagency.com"}], "destination": "/subdomains/portal/$1"},
-    {"source": "/(.*)", "has": [{"type": "host", "value": "form.influencerglobalagency.com"}], "destination": "/subdomains/form/$1"},
-    {"source": "/(.*)", "has": [{"type": "host", "value": "brand.influencerglobalagency.com"}], "destination": "/subdomains/brand/$1"},
-    {"source": "/(.*)", "has": [{"type": "host", "value": "creator.influencerglobalagency.com"}], "destination": "/subdomains/creator/$1"},
-    {"source": "/(.*)", "has": [{"type": "host", "value": "mdc.influencerglobalagency.com"}], "destination": "/subdomains/mdc/$1"},
-    {"source": "/(.*)", "has": [{"type": "host", "value": "oops.influencerglobalagency.com"}], "destination": "/subdomains/oops/$1"},
-    {"source": "/(.*)", "has": [{"type": "host", "value": "raebasics.influencerglobalagency.com"}], "destination": "/subdomains/raebasics/$1"},
-    {"source": "/(.*)", "has": [{"type": "host", "value": "solbrush.influencerglobalagency.com"}], "destination": "/subdomains/solbrush/$1"},
-    {"source": "/(.*)", "has": [{"type": "host", "value": "ambassadors.influencerglobalagency.com"}], "destination": "/subdomains/ambassadors/$1"},
-    {"source": "/(.*)", "has": [{"type": "host", "value": "client1.influencerglobalagency.com"}], "destination": "/subdomains/client1/$1"},
-    {"source": "/(.*)", "has": [{"type": "host", "value": "client2.influencerglobalagency.com"}], "destination": "/subdomains/client2/$1"},
-    {"source": "/(.*)", "has": [{"type": "host", "value": "client3.influencerglobalagency.com"}], "destination": "/subdomains/client3/$1"}
-  ]
+    "rewrites": [
+          {"source": "/(.*)", "has": [{"type": "host", "value": "app.influencerglobalagency.com"}], "destination": "/subdomains/app/index.html"},
+          {"source": "/(.*)", "has": [{"type": "host", "value": "portal.influencerglobalagency.com"}], "destination": "/subdomains/portal/index.html"},
+          {"source": "/(.*)", "has": [{"type": "host", "value": "form.influencerglobalagency.com"}], "destination": "/subdomains/form/index.html"},
+          {"source": "/(.*)", "has": [{"type": "host", "value": "brand.influencerglobalagency.com"}], "destination": "/subdomains/brand/index.html"},
+          {"source": "/(.*)", "has": [{"type": "host", "value": "creator.influencerglobalagency.com"}], "destination": "/subdomains/creator/index.html"},
+          {"source": "/(.*)", "has": [{"type": "host", "value": "mdc.influencerglobalagency.com"}], "destination": "/subdomains/mdc/index.html"},
+          {"source": "/(.*)", "has": [{"type": "host", "value": "oops.influencerglobalagency.com"}], "destination": "/subdomains/oops/index.html"},
+          {"source": "/(.*)", "has": [{"type": "host", "value": "raebasics.influencerglobalagency.com"}], "destination": "/subdomains/raebasics/index.html"},
+          {"source": "/(.*)", "has": [{"type": "host", "value": "solbrush.influencerglobalagency.com"}], "destination": "/subdomains/solbrush/index.html"},
+          {"source": "/(.*)", "has": [{"type": "host", "value": "ambassadors.influencerglobalagency.com"}], "destination": "/subdomains/ambassadors/index.html"},
+          {"source": "/(.*)", "has": [{"type": "host", "value": "client1.influencerglobalagency.com"}], "destination": "/subdomains/client1/index.html"},
+          {"source": "/(.*)", "has": [{"type": "host", "value": "client2.influencerglobalagency.com"}], "destination": "/subdomains/client2/index.html"},
+          {"source": "/(.*)", "has": [{"type": "host", "value": "client3.influencerglobalagency.com"}], "destination": "/subdomains/client3/index.html"}
+    ]
 }
